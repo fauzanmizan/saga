@@ -1,0 +1,79 @@
+<!-- == MODIFIED BY: Tim 3.B == -->
+<!-- == TANGGAL: 2025-06-23 23:20 WITA == -->
+<!-- == PERIHAL: Direksi Selanjutnya: Fase II - Produksi & Prototyping (Pembangunan Struktur HTML Aula Para Penjaga (Guardians) untuk Forger) == -->
+<!-- - Verifikasi bahwa #forger-page-container di forger.html sudah memadai sebagai target rendering dinamis untuk halaman "Aula Para Penjaga" (Guardians). -->
+<!-- - Dikonfirmasi bahwa semua struktur konten terkait (daftar penjaga, opsi manajemen) akan sepenuhnya dihasilkan oleh JavaScript, sehingga tidak ada perubahan statis yang diperlukan pada file ini. -->
+<!-- - Memastikan integritas semua struktur HTML dan komentar sebelumnya tetap utuh. -->
+<!-- =========================================== -->
+<!-- == MODIFIED BY: Tim 3.B == -->
+<!-- == TANGGAL: 2025-06-23 22:58 WITA == -->
+<!-- == PERIHAL: Direksi Selanjutnya: Fase II - Produksi & Prototyping (Pembangunan Struktur HTML Observatorium Kosmik & Tempaan Dunia untuk Forger) == -->
+<!-- - Verifikasi bahwa #forger-page-container di forger.html sudah memadai sebagai target rendering dinamis untuk halaman "Observatorium Kosmik" dan "Tempaan Dunia". -->
+<!-- - Dikonfirmasi bahwa semua struktur konten terkait (papan peringkat, status nexus, form pengaturan dunia) akan sepenuhnya dihasilkan oleh JavaScript, sehingga tidak ada perubahan statis yang diperlukan pada file ini. -->
+<!-- - Memastikan integritas semua struktur HTML dan komentar sebelumnya tetap utuh. -->
+<!-- =========================================== -->
+<!-- == MODIFIED BY: Tim 3.B == -->
+<!-- == TANGGAL: 2025-06-23 22:05 WITA == -->
+<!-- == PERIHAL: Direksi Selanjutnya: Fase II - Produksi & Prototyping (Pembangunan Struktur HTML Tenunan Nubuat (Prophecies) untuk Forger) == -->
+<!-- - Verifikasi bahwa #forger-page-container di forger.html sudah memadai sebagai target rendering dinamis untuk halaman "Tenunan Nubuat" (Prophecies). -->
+<!-- - Dikonfirmasi bahwa struktur form penulisan nubuat dan daftar nubuat yang sudah dikirim akan sepenuhnya dihasilkan oleh JavaScript, sehingga tidak ada perubahan statis yang diperlukan pada file ini. -->
+<!-- - Memastikan integritas semua struktur HTML dan komentar sebelumnya tetap utuh. -->
+<!-- =========================================== -->
+<!-- == MODIFIED BY: Tim 3.B == -->
+<!-- == TANGGAL: 2025-06-23 20:05 WITA == -->
+<!-- == PERIHAL: Direksi Selanjutnya: Fase II - Produksi & Prototyping (Pembangunan Struktur HTML Manajemen Permohonan Jiwa (Petitions) untuk Forger) == -->
+<!-- - Verifikasi bahwa #forger-page-container di forger.html sudah memadai sebagai target rendering dinamis untuk halaman "Permohonan Jiwa" (Petitions). -->
+<!-- - Dikonfirmasi bahwa struktur daftar permohonan dan tombol respons akan sepenuhnya dihasilkan oleh JavaScript, sehingga tidak ada perubahan statis yang diperlukan pada file ini. -->
+<!-- - Memastikan integritas semua struktur HTML dan komentar sebelumnya tetap utuh. -->
+<!-- =========================================== -->
+<!-- == MODIFIED BY: Tim 3.B == -->
+<!-- == TANGGAL: 2025-06-23 19:15 WITA == -->
+<!-- == PERIHAL: Direksi Selanjutnya: Fase II - Produksi & Prototyping (Pembangunan Struktur HTML Manajemen Wahyu (Encounters) untuk Forger) == -->
+<!-- - Verifikasi bahwa #forger-page-container di forger.html sudah memadai sebagai target rendering dinamis untuk halaman "Bengkel Wahyu" (Encounters). -->
+<!-- - Dikonfirmasi bahwa struktur form pembuatan/pengeditan dan daftar Encounter akan sepenuhnya dihasilkan oleh JavaScript, sehingga tidak ada perubahan statis yang diperlukan pada file ini. -->
+<!-- - Memastikan integritas semua struktur HTML dan komentar sebelumnya tetap utuh. -->
+<!-- =========================================== -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Soulforge Saga - Takhta Sang Penempa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="forger">
+
+    <div id="forger-app" class="app-container">
+        <aside class="w-24 lg:w-72 bg-sidebar-bg text-slate-300 flex flex-col shrink-0">
+             <nav id="forger-nav" class="flex-1 px-4 py-8 space-y-3"></nav>
+        </aside>
+
+        <main class="flex-1 bg-content-bg overflow-y-auto">
+            <header class="sticky top-0 bg-content-bg/80 backdrop-blur-sm z-10 h-24 flex items-center justify-between px-8 lg:px-12 border-b border-border-color">
+                <div id="forger-header-title">
+                    <h2 class="text-3xl font-bold text-white font-serif tracking-wider"></h2>
+                </div>
+                <button id="logout-button" class="px-4 py-2 text-sm font-semibold rounded-lg bg-slate-700 hover:bg-slate-600">Logout</button>
+            </header>
+            <div id="forger-page-container" class="p-8 lg:p-12">
+                <!-- Konten halaman Forger akan dirender di sini oleh JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p id="loading-text" class="mt-6 text-xl text-slate-400"></p>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,2096 @@
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.23 - Aula Para Penjaga Forger)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Senin, 23 Juni 2025, pukul 11:35 PM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS lengkap untuk antarmuka "Aula Para Penjaga" di Forger.
+ * - Styling untuk daftar Penjaga dan opsi manajemennya.
+ * - Memastikan konsistensi dengan estetika glassmorphism dan responsivitas.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.22 - Observatorium Kosmik & Tempaan Dunia Forger)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Senin, 23 Juni 2025, pukul 11:05 PM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS lengkap untuk antarmuka "Observatorium Kosmik" dan "Tempaan Dunia" di Forger.
+ * - Styling untuk Papan Peringkat Jiwa, Status Nexus Wilayah, dan form Pengaturan Dunia.
+ * - Memastikan konsistensi dengan estetika glassmorphism dan responsivitas.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.21 - Tenunan Nubuat Forger)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Senin, 23 Juni 2025, pukul 10:35 PM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS lengkap untuk antarmuka "Tenunan Nubuat" di Forger.
+ * - Styling untuk form penulisan nubuat dan daftar nubuat yang sudah dikirim.
+ * - Memastikan konsistensi dengan estetika glassmorphism dan responsivitas.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.20 - Tempaan Artefak Forger)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Senin, 23 Juni 2025, pukul 08:45 PM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS lengkap untuk antarmuka "Tempaan Artefak" di Forger.
+ * - Styling untuk form pembuatan/pengeditan Artefak, daftar Artefak yang sudah ditempa, dan efek pasif.
+ * - Memastikan konsistensi dengan estetika glassmorphism dan responsivitas.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.19 - Manajemen Permohonan Jiwa Forger)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Senin, 23 Juni 2025, pukul 08:08 PM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS lengkap untuk antarmuka "Permohonan Jiwa" di Forger.
+ * - Styling untuk daftar permohonan yang tertunda dan yang sudah direspons, serta tombol-tombol respons.
+ * - Memberikan efek visual untuk permohonan yang sudah direspons (opacity rendah, grayscale).
+ * - Memastikan konsistensi dengan estetika glassmorphism dan responsivitas.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.18 - Manajemen Wahyu Forger)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Senin, 23 Juni 2025, pukul 07:27 PM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS lengkap untuk antarmuka "Bengkel Wahyu" (Manajemen Encounters) di Forger.
+ * - Styling untuk form pembuatan/pengeditan Encounter dan daftar Encounter yang sudah ada.
+ * - Memastikan konsistensi dengan estetika glassmorphism dan responsivitas.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.17 - Peta Dunia Interaktif & Indikator Nexus)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Senin, 23 Juni 2025, pukul 06:55 PM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS lengkap untuk Peta Dunia Interaktif dan Indikator Nexus.
+ * - Styling untuk kontainer peta utama, penanda wilayah (region marker) dengan status Nexus yang berbeda (Sanctum, Maelstrom, Balanced).
+ * - Menambahkan efek hover pada penanda wilayah dan gaya untuk panel detail wilayah.
+ * - Memastikan konsistensi dengan estetika glassmorphism dan responsivitas.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.16 - Mini-game Memesan)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Senin, 23 Juni 2025, pukul 06:05 PM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS lengkap untuk modal mini-game "Memesan" (Kerajinan Kustom).
+ * - Styling untuk Area Pilihan Resep, Area Material yang Dibutuhkan, Inventaris Pemain (untuk Material), dan Umpan Balik Status Pesanan.
+ * - Memastikan konsistensi dengan estetika glassmorphism dan responsivitas.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.15 - Mini-game Bertukar)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Senin, 23 Juni 2025, pukul 05:30 PM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS lengkap untuk modal mini-game "Bertukar" (Perdagangan Unik).
+ * - Styling untuk Area Barang yang Ditawarkan NPC, Area Barang yang Dimiliki Pemain, dan Ringkasan Pertukaran.
+ * - Memastikan konsistensi dengan estetika glassmorphism dan responsivitas.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.14 - Mini-game Menginspirasi)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Senin, 23 Juni 2025, pukul 05:15 PM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS lengkap untuk modal mini-game "Menginspirasi" (Fokus Motivasi).
+ * - Styling untuk Pilihan Motivasi, Bar Kekuatan Niat (canvas), dan pesan Umpan Balik Status NPC.
+ * - Memastikan konsistensi dengan estetika glassmorphism dan responsivitas.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.13 - Mini-game Merasakan)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Senin, 23 Juni 2025, pukul 04:30 PM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS lengkap untuk modal mini-game "Merasakan" (Spektrum Emosi).
+ * - Styling untuk Spektrum Emosi Visual (canvas), Penanda Jiwa NPC, Instrumen Nada Jiwa, dan pesan Umpan Balik Emosional.
+ * - Memastikan konsistensi dengan estetika glassmorphism dan responsivitas.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.12 - Mini-game Menantang)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Senin, 23 Juni 2025, pukul 03:57 PM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS lengkap untuk modal mini-game "Menantang" (Duel Niat).
+ * - Styling untuk Bar Tekad Lawan (canvas), area Kartu Strategi, dan pesan Umpan Balik Duel.
+ * - Memastikan konsistensi dengan estetika glassmorphism dan responsivitas.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.11 - Mini-game Menyerap Gema)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Senin, 23 Juni 2025, pukul 11:20 AM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS lengkap untuk modal mini-game "Menyerap Gema" (Harmonisasi Gema).
+ * - Styling untuk Aliran Gema (canvas), area Saluran Resonansi, dan Bar Progres Kejelasan.
+ * - Memastikan konsistensi dengan estetika glassmorphism dan responsivitas.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.10 - Mini-game Menginterogasi)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Senin, 23 Juni 2025, pukul 03:40 AM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS lengkap untuk modal mini-game "Menginterogasi" (Barikade Mental).
+ * - Styling untuk Komposur Bar, area Rune Barikade Mental (normal, hover, broken state), dan Kartu Argumen.
+ * - Memastikan konsistensi dengan estetika glassmorphism dan responsivitas.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.9 - Soul Sanctuary Full Evolution)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Senin, 23 Juni 2025, pukul 02:15 AM WITA.
+ *
+ * Pembaruan:
+ * - Menyempurnakan gaya CSS untuk evolusi visual Soul Sanctuary: The Hall (Peringkat Jiwa 11-30) dan The Observatory (Peringkat Jiwa 31-50).
+ * - Memastikan transisi visual yang mulus antar tahap evolusi Sanctuary dengan properti transisi universal.
+ * - Memastikan elemen Altar Permohonan konsisten dengan gaya glassmorphism yang sudah ada.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.8 - Soul Sanctuary Evolution)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Minggu, 22 Juni 2025, pukul 08:24 PM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS untuk evolusi visual Soul Sanctuary: The Hall (Peringkat Jiwa 11-30) dan The Observatory (Peringkat Jiwa 31-50).
+ * - Memastikan transisi visual yang mulus antar tahap evolusi Sanctuary dengan menambahkan properti transisi ke kelas dasar.
+ * - Menyesuaikan gaya teks dan ikon di setiap fase Sanctuary untuk mencerminkan tema visualnya.
+ */
+/*
+ * The Soulforge Saga - Cetakan Agung Visual Terpadu (v2.7 - Soul Sanctuary: The Grotto)
+ * Satu file untuk mengatur hukum visual seluruh dunia.
+ * Ditenun ulang pada Minggu, 22 Juni 2025, pukul 07:25 PM WITA.
+ *
+ * Pembaruan:
+ * - Menambahkan gaya CSS dasar untuk Soul Sanctuary (The Grotto).
+ * - Memastikan elemen-elemen di dalam Sanctuary konsisten dengan glassmorphism.
+ * - Menambahkan efek visual subtle seperti bayangan dan glow untuk mencerminkan tema kristal/gua.
+ */
+
+/* ============================================= */
+/* == FONDASI & VARIABEL GLOBAL == */
+/* ============================================= */
+
+:root {
+    --brand-color: #818cf8; /* indigo-400 */
+    --brand-color-light-rgb: 129, 140, 248; /* RGB for indigo-400 */
+    --accent-gold: #fde047; /* yellow-300 */
+    --accent-red: #f87171; /* red-400 */
+    --sidebar-bg: #0f172a; /* slate-900 */
+    --content-bg: #1e293b; /* slate-800 */
+    --card-bg: #111827; /* gray-900 */
+    --border-color: #374151; /* gray-700 */
+    --text-primary: #f3f4f6; /* gray-100 */
+    --text-secondary: #9ca3af; /* gray-400 */
+    --text-title: #ffffff;
+    --font-display: 'Cinzel', serif;
+    --font-body: 'Cormorant Garamond', serif;
+
+    /* Glassmorphism base colors */
+    --glass-bg-color: rgba(17, 24, 39, 0.6); /* --card-bg with transparency */
+    --glass-border-color: rgba(71, 85, 105, 0.4); /* subtle border */
+    --glass-shadow-color: rgba(0, 0, 0, 0.4);
+    --glass-highlight-color: rgba(255, 255, 255, 0.08); /* inner highlight */
+    --glass-input-bg: rgba(30, 41, 59, 0.7); /* Slightly darker for input fields */
+
+    /* New specific colors for visual flair */
+    --glass-primary-button-bg: linear-gradient(135deg, var(--brand-color), rgba(129, 140, 248, 0.7));
+    --glass-secondary-button-bg: linear-gradient(135deg, rgba(34, 197, 94, 0.6), rgba(20, 83, 45, 0.6));
+    --glass-table-odd-bg: rgba(17, 24, 39, 0.3);
+    --glass-table-even-bg: rgba(17, 24, 39, 0.2);
+    --glass-table-hover-bg: rgba(129, 140, 248, 0.08);
+
+    /* Glassmorphism specific variables for hover/active effects */
+    --glass-base-blur: 10px; /* Base blur value for glassmorphism elements */
+    --glass-card-hover-glow-color: rgba(var(--brand-color-light-rgb), 0.7);
+    --glass-card-hover-blur-increase: 2px;
+
+    /* Responsive typography adjustments */
+    font-size: 16px; /* Base font size */
+}
+
+@media (min-width: 768px) { /* md */
+    :root {
+        font-size: 17px;
+    }
+}
+
+@media (min-width: 1024px) { /* lg */
+    :root {
+        font-size: 18px;
+    }
+}
+
+
+html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--content-bg);
+    color: var(--text-primary);
+    font-size: 1em; /* Use relative units */
+    font-weight: 500;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: filter 0.8s ease-in-out, background-image 2s ease-in-out;
+    background-image: radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.8) 0%, var(--content-bg) 70%);
+
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKaggsAAAAFUlEQVQYV2NkgAFGMiMDzDQ0NAwABjwD/R4JqX0AAAAASUVORK5CYII=');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.font-serif {
+    font-family: var(--font-display);
+}
+
+
+/* ============================================= */
+/* == GLASSMORPHISM KOMPONEN == */
+/* ============================================= */
+
+.glass-card {
+    background: var(--glass-bg-color);
+    border: 1px solid var(--glass-border-color);
+    box-shadow: 0 8px 32px 0 var(--glass-shadow-color);
+    backdrop-filter: blur(var(--glass-base-blur));
+    -webkit-backdrop-filter: blur(var(--glass-base-blur));
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--glass-highlight-color) 0%, transparent 50%, transparent 100%);
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.glass-card:hover {
+    box-shadow: 0 0 15px var(--glass-card-hover-glow-color), 0 0 30px var(--glass-card-hover-glow-color);
+    backdrop-filter: blur(calc(var(--glass-base-blur) + var(--glass-card-hover-blur-increase)));
+    -webkit-backdrop-filter: blur(calc(var(--glass-base-blur) + var(--glass-card-hover-blur-increase)));
+    transition: box-shadow 0.5s ease, backdrop-filter 0.5s ease;
+}
+
+.glass-container {
+    background: rgba(17, 24, 39, 0.4);
+    border: 1px solid rgba(71, 85, 105, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 8px;
+}
+
+.glass-input {
+    background: var(--glass-input-bg);
+    border: 1px solid var(--glass-border-color);
+    border-radius: 0.5rem;
+    padding: 0.75em 1em;
+    color: var(--text-primary);
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
+.glass-input:focus {
+    border-color: var(--brand-color);
+    box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.3);
+}
+
+.glass-button {
+    background: var(--glass-bg-color);
+    border: 1px solid var(--glass-border-color);
+    padding: 0.75em 2em;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 1.125em;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    transition: all 0.3s ease-in-out;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.glass-button:hover {
+    border-color: var(--brand-color);
+    color: var(--text-title);
+    background-color: rgba(129, 140, 248, 0.15);
+    box-shadow: 0 0 15px rgba(129, 140, 248, 0.3);
+}
+.glass-button:active {
+    transform: scale(0.98); /* Sedikit menekan ke dalam */
+    transition: transform 0.1s ease-out;
+}
+.glass-button.primary-button {
+    background: var(--glass-primary-button-bg);
+    border-color: var(--brand-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(129, 140, 248, 0.4);
+}
+.glass-button.primary-button:hover {
+    background: linear-gradient(135deg, var(--brand-color), rgba(129, 140, 248, 0.9));
+    box-shadow: 0 6px 20px rgba(129, 140, 248, 0.6);
+}
+.glass-button.secondary-button {
+    background: var(--glass-secondary-button-bg);
+    border-color: rgba(34, 197, 94, 0.8);
+    color: white;
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+.glass-button.secondary-button:hover {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.8), rgba(20, 83, 45, 0.8));
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
+}
+
+/* Tabel Glassmorphism */
+.glass-table-container {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border-color);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.glass-table-header {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.glass-table-row {
+    transition: background-color 0.2s ease-in-out;
+}
+.glass-table-row:nth-child(odd) {
+    background-color: var(--glass-table-odd-bg);
+}
+.glass-table-row:nth-child(even) {
+    background-color: var(--glass-table-even-bg);
+}
+.glass-table-row:hover {
+    background-color: var(--glass-table-hover-bg);
+}
+
+/* ============================================= */
+/* == GERBANG TAKDIR (HALAMAN LOGIN) == */
+/* ============================================= */
+
+.login-gate-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#background-canvas {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.3;
+}
+
+.gate-container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2em;
+    max-width: 600px;
+    width: 100%;
+    animation: fadeInGate 1.5s ease-in-out;
+    background: var(--glass-bg-color);
+    border: 1px solid var(--glass-border-color);
+    box-shadow: 0 8px 32px 0 var(--glass-shadow-color);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+}
+.gate-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--glass-highlight-color) 0%, transparent 50%, transparent 100%);
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.mantra-input {
+    font-family: var(--font-body);
+    font-size: 1.5em;
+    background: rgba(30, 41, 59, 0.5);
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-primary);
+    text-align: center;
+    padding: 0.5em 1em;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+.mantra-input:focus {
+    outline: none;
+    border-bottom-color: var(--brand-color);
+    box-shadow: 0 2px 8px rgba(129, 140, 248, 0.3);
+}
+
+.threshold-button {
+    font-family: var(--font-display);
+    font-size: 1.125em;
+    letter-spacing: 0.1em;
+    background: linear-gradient(135deg, var(--brand-color), rgba(129, 140, 248, 0.7));
+    border: 1px solid var(--brand-color);
+    color: white;
+    padding: 0.75em 2em;
+    margin-top: 2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(129, 140, 248, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 0.5rem;
+}
+.threshold-button:hover, .threshold-button:not(:disabled):hover {
+    background: linear-gradient(135deg, var(--brand-color), rgba(129, 140, 248, 0.9));
+    box-shadow: 0 6px 20px rgba(129, 140, 248, 0.6);
+}
+.threshold-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background: rgba(129, 140, 248, 0.3);
+    box-shadow: none;
+}
+
+.error-message {
+    color: var(--accent-red);
+    margin-top: 1em;
+    height: 1.5em;
+    transition: opacity 0.3s;
+}
+
+
+/* ============================================= */
+/* == STRUKTUR & NAVIGASI UTAMA APLIKASI == */
+/* ============================================= */
+
+.app-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+    .app-container {
+        flex-direction: row;
+    }
+}
+
+/* Sidebar Glassmorphism */
+aside {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-right: 1px solid var(--glass-border-color);
+    width: 100%;
+    height: auto;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 1024px) {
+    aside {
+        width: 24em;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 2em;
+    }
+}
+
+aside nav {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    padding-bottom: 0.5em;
+}
+
+@media (min-width: 1024px) {
+    aside nav {
+        flex-direction: column;
+        overflow-x: visible;
+        white-space: normal;
+        padding-bottom: 0;
+    }
+}
+
+.sidebar-link {
+    transition: all 0.2s ease-in-out;
+    border-radius: 0.75em;
+    padding: 1em;
+    margin: 0.5em;
+    min-width: fit-content;
+}
+
+@media (min-width: 1024px) {
+    .sidebar-link {
+        margin: 0.5em 0;
+    }
+}
+
+.sidebar-link:hover {
+    background-color: rgba(17, 24, 39, 0.5);
+}
+.sidebar-link.active {
+    background-color: rgba(17, 24, 39, 0.8);
+    box-shadow: inset 4px 0 0 0 var(--brand-color), 0 2px 10px rgba(129, 140, 248, 0.2);
+    color: var(--text-title);
+    font-weight: 700;
+}
+
+/* Header Glassmorphism */
+header {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border-color);
+    padding: 1em;
+}
+
+@media (min-width: 1024px) {
+    header {
+        padding: 2em;
+    }
+}
+
+/* Main Content Area */
+main {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1em;
+}
+
+@media (min-width: 768px) {
+    main {
+        padding: 2em;
+    }
+}
+
+/* ============================================= */
+/* == KOMPONEN UNIVERSAL == */
+/* ============================================= */
+
+.loading-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: none;
+    align-items: center; justify-content: center; flex-direction: column;
+    opacity: 0; transition: opacity 0.3s ease-in-out;
+}
+.loading-screen.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.loading-spinner {
+    width: 50px; height: 50px;
+    border: 4px solid var(--border-color);
+    border-top-color: var(--brand-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.saga-button { /* Deprecated, use glass-button */
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 0.5em 1em;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.saga-button:hover { /* Deprecated, use glass-button */
+    background-color: var(--border-color);
+    color: var(--text-title);
+}
+
+/* ============================================= */
+/* == ANIMASI & EFEK TRANSISI == */
+/* ============================================= */
+
+@keyframes fadeInGate {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.animate-fade-in-down {
+    animation: fadeInDown 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animasi untuk transisi layar Gerbang Takdir ke game */
+@keyframes shatterEffect {
+  0% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); /* Full screen initially */
+    transform: scale(1) rotate(0deg); /* No transformation initially */
+    opacity: 1; /* Fully opaque */
+  }
+  20% {
+    clip-path: polygon(5% 5%, 95% 5%, 95% 95%, 5% 95%); /* Slight inward shift, beginning of "crack" illusion */
+  }
+  40% {
+    clip-path: polygon(15% 0%, 85% 10%, 100% 90%, 0% 100%); /* More fragmented, beginning of "break" */
+    transform: scale(1.05) rotate(-1deg); /* Small scale and rotation for visual impact */
+  }
+  60% {
+    /* More complex polygon to simulate multiple larger fragments */
+    clip-path: polygon(20% 0%, 80% 15%, 90% 90%, 10% 100%, 0% 50%);
+    transform: scale(1.1) rotate(2deg); /* Increased scale and rotation */
+    opacity: 0.8; /* Slight fade */
+  }
+  80% {
+    /* Highly fragmented, pieces separating */
+    clip-path: polygon(30% -5%, 70% 20%, 95% 80%, 15% 105%, 5% 40%);
+    transform: scale(1.2) rotate(-5deg); /* Larger scale, more rotation */
+    opacity: 0.4; /* More fade */
+  }
+  100% {
+    /* Pieces are completely off-screen or invisible */
+    clip-path: polygon(50% -20%, 50% 120%, 50% 120%, 50% -20%); /* Collapsed to a line, effectively disappearing */
+    transform: scale(1.3) rotate(10deg); /* Further scaling and rotation to simulate flying away */
+    opacity: 0; /* Fully transparent */
+  }
+}
+
+.shatter-screen-active {
+  animation: shatterEffect 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; /* Using a more dynamic easing function */
+  pointer-events: none;
+  z-index: 9999;
+  position: fixed; /* Ensures it covers the entire viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Add a slight overlay for better visual */
+}
+
+
+/* Encounter visual effects */
+.encounter-whisper-active {
+    filter: brightness(0.7) grayscale(0.2);
+    transition: filter 0.8s ease-in-out;
+}
+
+.encounter-glimmer-active {
+    filter: brightness(1.2) saturate(1.1);
+    transition: filter 0.8s ease-in-out;
+}
+
+/* Echo Harmonization mini-game effects */
+.echo-harmonization-active {
+    filter: saturate(0.5) contrast(1.2) hue-rotate(20deg);
+    transition: filter 0.5s ease-in-out;
+}
+
+.echo-backlash-active {
+    filter: saturate(0.2) contrast(1.5) brightness(0.5) hue-rotate(-30deg);
+    animation: echoDistort 0.2s infinite alternate;
+    transition: filter 0.5s ease-in-out;
+}
+
+@keyframes echoDistort {
+    from { transform: translateX(-1px) translateY(1px); }
+    to { transform: translateX(1px) translateY(-1px); }
+}
+
+/* Interrogate mini-game styles */
+/* Styling for the modal overlay and its content */
+#interrogate-modal {
+    background-color: rgba(0, 0, 0, 0.8); /* Darker overlay for focus */
+    backdrop-filter: blur(8px); /* Glassmorphism blur for the overlay */
+    -webkit-backdrop-filter: blur(8px);
+    transition: opacity 0.3s ease-in-out; /* Smooth transition when shown/hidden */
+}
+
+/* The actual modal content (using glass-card class) */
+#interrogate-modal .modal-content {
+    animation: scaleIn 0.3s ease-out forwards; /* Reuse existing scaleIn animation */
+}
+
+.interrogate-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    text-align: center;
+}
+
+/* Styling for the Composure Bar (canvas element) */
+#interrogate-composure-canvas {
+    border: 1px solid var(--brand-color); /* A solid border for the bar */
+    box-shadow: 0 0 15px rgba(129, 140, 248, 0.3), inset 0 0 10px rgba(129, 140, 248, 0.1); /* Subtle glow */
+    transition: all 0.3s ease; /* Smooth transitions for any dynamic changes */
+}
+
+/* Styling for the Mental Barricade Runes display area */
+.mental-barricade-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+/* Styling for individual Rune elements */
+.interrogate-rune {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--glass-border-color);
+    border-radius: 8px;
+    background: rgba(30, 41, 59, 0.7); /* Slightly darker background for runes */
+    transition: all 0.2s ease-in-out;
+    width: 80px;
+    height: 80px;
+    justify-content: center;
+    position: relative; /* For particle effects if added */
+    cursor: default; /* Not directly clickable, so change cursor */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), inset 0 0 8px rgba(255, 255, 255, 0.05); /* Soft shadow */
+}
+
+.interrogate-rune:hover:not(.broken) {
+    border-color: var(--brand-color);
+    box-shadow: 0 0 15px rgba(129, 140, 248, 0.4), inset 0 0 10px rgba(129, 140, 248, 0.2);
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.interrogate-rune.broken {
+    opacity: 0.4;
+    filter: grayscale(0.8);
+    transform: scale(0.9);
+    border-color: rgba(248, 113, 113, 0.5); /* Redder border for broken state */
+    box-shadow: 0 0 10px rgba(248, 113, 113, 0.3); /* Red glow for broken state */
+}
+
+/* Styling for the Argument Cards container */
+#argument-cards-container {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid for cards */
+}
+
+/* Base style for argument cards (using glass-button) */
+.interro-card-btn {
+    min-width: 100px;
+    margin: 5px; /* Adjust margin for better spacing within the grid */
+    font-size: 0.9em;
+}
+
+/* Specific style for "risky" argument cards */
+.interro-card-btn.bg-red-700 { /* This class is added directly in JS if a card is risky */
+    background: linear-gradient(135deg, rgba(248, 113, 113, 0.6), rgba(185, 28, 28, 0.6)); /* Red gradient for risky cards */
+    border-color: var(--accent-red);
+    box-shadow: 0 4px 15px rgba(248, 113, 113, 0.4);
+}
+
+.interro-card-btn.bg-red-700:hover {
+    background: linear-gradient(135deg, rgba(248, 113, 113, 0.8), rgba(185, 28, 28, 0.8)); /* Darker red on hover */
+    box-shadow: 0 6px 20px rgba(248, 113, 113, 0.6);
+}
+
+@media (min-width: 768px) {
+    .interro-card-btn {
+        min-width: 120px;
+        font-size: 1.125em;
+    }
+}
+
+
+/* ============================================= */
+/* == ATMOSFER DUNIA DINAMIS == */
+/* ============================================= */
+
+.world-harmonious {
+    background-image: radial-gradient(circle at 50% 50%, rgba(129, 140, 248, 0.3) 0%, rgba(30, 41, 59, 0.9) 70%);
+}
+
+.world-discordant {
+    background-image: radial-gradient(circle at 50% 50%, rgba(248, 113, 113, 0.2) 0%, rgba(15, 23, 42, 0.9) 70%);
+}
+
+.world-balanced {
+    background-image: radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.8) 0%, var(--content-bg) 70%);
+}
+
+/* Styles for Nexus Status List (Observatory) */
+#regions-status-list .glass-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+#regions-status-list .glass-card > div:first-child {
+    display: flex;
+    align-items: center;
+}
+#regions-status-list .glass-card h5 {
+    margin-bottom: 0.2em;
+    font-size: 1.1em;
+}
+#regions-status-list .glass-card p {
+    font-size: 0.85em;
+}
+#regions-status-list .glass-card .text-right {
+    flex-shrink: 0;
+}
+
+/* ============================================= */
+/* == WANDERER UI SPECIFICS (SOUL SANCTUARY) == */
+/* ============================================= */
+
+/* Base style for The Grotto (Soul Rank 1-10) */
+/* Applied to #sanctuary-visuals-container by JS when soulRank is appropriate */
+.sanctuary-grotto {
+    /* Subtle background to mimic cave walls/crystals */
+    background: linear-gradient(145deg, rgba(17, 24, 39, 0.7) 0%, rgba(30, 41, 59, 0.7) 70%),
+                url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAMAAADpRfsLAAAAMFBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB9O2g+AAAAD3RSTlMAAAAAAAAEBgcICQwPEhQYHkI/1gAAAC1JREFUCNdjYGAJgYFBDg4GBkZgYGBgAAqYGRgQAAKGIQxjgABWJkYg0AAAIiMAAkD7Q7QAAAAASUVORK5CYII=') repeat; /* Very subtle crystal pattern */
+    background-size: 10px 10px; /* Adjust as needed for pattern size */
+    box-shadow: inset 0 0 20px rgba(129, 140, 248, 0.1), /* Soft inner glow */
+                0 0 30px rgba(129, 140, 248, 0.15); /* Soft outer glow */
+    border-image: linear-gradient(45deg, rgba(129, 140, 248, 0.4), rgba(71, 85, 105, 0.4), rgba(129, 140, 248, 0.4)) 1; /* Subtle gradient border */
+    border-image-slice: 1; /* Ensure border-image is applied correctly */
+
+    /* Universal transition for Sanctuary evolutions */
+    transition: background 2s ease-in-out, box-shadow 1.5s ease-in-out, border-image 1.5s ease-in-out, filter 1s ease-in-out;
+}
+
+/* Ensure inner elements maintain glassmorphism */
+/* These specific styles will apply to the content *inside* the main Sanctuary container
+   when the respective theme class is active, overriding general glass-container properties
+   to fit the Grotto's visual nuance. */
+.sanctuary-grotto .glass-container {
+    background: rgba(17, 24, 39, 0.5); /* Slightly less opaque than default glass-container */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(129, 140, 248, 0.05); /* Subtle inner element shadow */
+}
+
+.sanctuary-grotto h3,
+.sanctuary-grotto h4 {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3); /* Subtle glow for titles */
+}
+
+.sanctuary-grotto .feather {
+    filter: drop-shadow(0 0 5px rgba(129, 140, 248, 0.5)); /* Glow effect for icons */
+}
+
+/* Style for The Hall (Soul Rank 11-30) */
+/* This class will replace .sanctuary-grotto on the main #soul-sanctuary-container */
+.sanctuary-hall {
+    /* Refined background for a hall, subtly constructed feel with star hints */
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.7) 0%, rgba(17, 24, 39, 0.8) 100%),
+                radial-gradient(circle at 50% 5%, rgba(129, 140, 248, 0.1) 0%, transparent 80%), /* Hint of light from top */
+                linear-gradient(90deg, rgba(71, 85, 105, 0.1) 1px, transparent 1px), /* Vertical line pattern 1 (pillars) */
+                linear-gradient(90deg, rgba(71, 85, 105, 0.1) 1px, transparent 1px); /* Vertical line pattern 2 (pillars) */
+    background-size: 100% 100%, 100% 100%, 40px 100%, 40px 100%; /* Spacing for vertical lines */
+    background-position: 0 0, 0 0, 0 0, 20px 0; /* Offset second line pattern for more density */
+
+    box-shadow: inset 0 0 30px rgba(129, 140, 248, 0.2), /* Enhanced inner glow */
+                0 0 40px rgba(129, 140, 248, 0.25); /* Enhanced outer glow */
+    border-image: linear-gradient(90deg, transparent 0%, rgba(129, 140, 248, 0.5) 10%, rgba(71, 85, 105, 0.5) 50%, rgba(129, 140, 248, 0.5) 90%, transparent 100%) 1;
+    border-image-slice: 1;
+
+    /* Transition properties are inherited from .sanctuary-grotto's universal transition */
+}
+
+.sanctuary-hall .glass-container {
+    background: rgba(17, 24, 39, 0.6); /* Slightly more opaque than grotto for a 'solid' feel */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(129, 140, 248, 0.1); /* Stronger inner element shadow */
+}
+
+.sanctuary-hall h3,
+.sanctuary-hall h4 {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 0 0 15px rgba(129, 140, 248, 0.3); /* Stronger glow for titles */
+}
+
+.sanctuary-hall .feather {
+    filter: drop-shadow(0 0 7px rgba(129, 140, 248, 0.6)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)); /* More intense icon glow */
+}
+
+/* Style for The Observatory (Soul Rank 31-50) */
+/* This class will replace .sanctuary-hall (and .sanctuary-grotto) on the main #soul-sanctuary-container */
+.sanctuary-observatory {
+    /* Cosmic background, simulating real-time cosmos through a dome */
+    background: radial-gradient(circle at 50% 50%, rgba(129, 140, 248, 0.15) 0%, rgba(15, 23, 42, 0.8) 70%, rgba(0, 0, 0, 0.9) 100%), /* Central cosmic glow fading out */
+                radial-gradient(circle at 20% 80%, rgba(243, 244, 246, 0.08) 0%, transparent 50%), /* Subtle star cluster 1 */
+                radial-gradient(circle at 80% 30%, rgba(243, 244, 246, 0.08) 0%, transparent 50%); /* Subtle star cluster 2 */
+    background-size: cover, auto, 5px 5px; /* Cover for gradients, small for pattern */
+    background-position: center, center, center;
+
+    box-shadow: inset 0 0 50px rgba(129, 140, 248, 0.3), /* Stronger inner glow */
+                0 0 60px rgba(129, 140, 248, 0.4), /* Stronger outer glow */
+                0 0 80px rgba(129, 140, 248, 0.2) inset; /* Another inner layer of glow */
+
+    border-image: linear-gradient(45deg, rgba(129, 140, 248, 0.8), rgba(243, 244, 246, 0.6), rgba(129, 140, 248, 0.8)) 1;
+    border-image-slice: 1;
+
+    /* Transition properties are inherited from .sanctuary-grotto's universal transition */
+}
+
+.sanctuary-observatory .glass-container {
+    background: rgba(25, 35, 55, 0.7); /* Darker, clearer glass for cosmic view */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(129, 140, 248, 0.15); /* Deep shadow, subtle glow */
+}
+
+.sanctuary-observatory h3,
+.sanctuary-observatory h4 {
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.6), 0 0 20px rgba(129, 140, 248, 0.4); /* Stronger glow for titles */
+}
+
+.sanctuary-observatory .feather {
+    filter: drop-shadow(0 0 8px rgba(129, 140, 248, 0.8)) drop-shadow(0 0 15px rgba(255, 255, 255, 0.3)); /* More intense icon glow */
+}
+
+/* ============================================= */
+/* == MINI-GAME: MENYERAP GEMA (HARMONISASI GEMA) == */
+/* ============================================= */
+
+/* Styling for the modal overlay and its content */
+#absorb-echo-modal {
+    background-color: rgba(15, 23, 42, 0.85); /* Darker, slightly blueish overlay for Echo theme */
+    backdrop-filter: blur(10px); /* Stronger glassmorphism blur */
+    -webkit-backdrop-filter: blur(10px);
+    transition: opacity 0.3s ease-in-out; /* Smooth transition when shown/hidden */
+}
+
+/* The actual modal content (using glass-card class) */
+#absorb-echo-modal .modal-content {
+    animation: scaleIn 0.3s ease-out forwards; /* Reuse existing scaleIn animation */
+    /* Add specific shadow or border glow for this modal */
+    box-shadow: 0 0 30px rgba(129, 140, 248, 0.3), 0 0 50px rgba(71, 85, 105, 0.2);
+    border-color: rgba(129, 140, 248, 0.5);
+}
+
+/* Styling for the Echo Flow Canvas */
+#echo-flow-canvas {
+    background-color: rgba(17, 24, 39, 0.8); /* Dark background for the canvas */
+    border: 1px solid rgba(129, 140, 248, 0.6); /* Brand color border, hinting at energy */
+    box-shadow: 0 0 15px rgba(129, 140, 248, 0.2), inset 0 0 10px rgba(129, 140, 248, 0.1); /* Soft blue glow */
+    transition: all 0.3s ease; /* Smooth transitions for any dynamic changes */
+    /* Basic responsiveness */
+    max-width: 100%;
+    height: auto;
+}
+
+/* Styling for the Resonance Channel Display */
+#resonance-channel-display {
+    background: linear-gradient(90deg, rgba(71, 85, 105, 0.5) 0%, rgba(129, 140, 248, 0.3) 50%, rgba(71, 85, 105, 0.5) 100%); /* Gradient to represent flow */
+    border: 1px solid rgba(129, 140, 248, 0.7); /* Stronger brand color border */
+    box-shadow: 0 0 15px rgba(129, 140, 248, 0.4); /* Clear blue glow */
+    transition: all 0.5s ease-in-out; /* Smooth transitions for its state changes */
+    font-family: var(--font-display);
+    font-size: 1.1em;
+    letter-spacing: 0.05em;
+}
+
+/* Styling for the Clarity Progress Bar */
+#clarity-progress-bar {
+    background-color: var(--glass-input-bg); /* Darker background like inputs */
+    border: 1px solid var(--border-color);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); /* Inner shadow for depth */
+}
+
+#clarity-progress-bar > div { /* The inner progress fill */
+    background: linear-gradient(90deg, var(--brand-color), #6366f1); /* Gradient for the fill */
+    transition: width 0.5s ease-out; /* Smooth fill animation */
+}
+
+/* ============================================= */
+/* == MINI-GAME: MENANTANG (DUEL NIAT) == */
+/* ============================================= */
+
+/* Styling for the modal overlay and its content */
+#challenge-modal {
+    background-color: rgba(25, 35, 55, 0.85); /* Darker, slightly blue-gray overlay for Challenge theme */
+    backdrop-filter: blur(10px); /* Stronger glassmorphism blur */
+    -webkit-backdrop-filter: blur(10px);
+    transition: opacity 0.3s ease-in-out; /* Smooth transition when shown/hidden */
+}
+
+/* The actual modal content (using glass-card class) */
+#challenge-modal .modal-content {
+    animation: scaleIn 0.3s ease-out forwards; /* Reuse existing scaleIn animation */
+    /* Add specific shadow or border glow for this modal, emphasizing strength/resolve */
+    box-shadow: 0 0 30px rgba(129, 140, 248, 0.4), 0 0 50px rgba(71, 85, 105, 0.3);
+    border-color: rgba(129, 140, 248, 0.6);
+}
+
+/* Styling for the Opponent Will Canvas */
+#opponent-will-canvas {
+    background-color: rgba(17, 24, 39, 0.8); /* Dark background for the canvas */
+    border: 1px solid rgba(71, 85, 105, 0.7); /* Stronger grey-blue border for "will" */
+    box-shadow: 0 0 15px rgba(71, 85, 105, 0.3), inset 0 0 10px rgba(71, 85, 105, 0.15); /* Subtle grey-blue glow */
+    transition: all 0.3s ease; /* Smooth transitions for any dynamic changes */
+    max-width: 100%;
+    height: auto;
+}
+
+/* Styling for the Strategy Cards container */
+#strategy-cards-container {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid for cards */
+    gap: 1rem; /* Adjust gap for strategy cards */
+}
+
+/* Styling for individual Strategy Cards (using glass-button) */
+/* No specific class needed here as `glass-button` handles general styling */
+
+/* Styling for the Duel Feedback Message */
+#duel-feedback-message {
+    font-family: var(--font-display);
+    font-size: 1.5em; /* Larger font for emphasis */
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(129, 140, 248, 0.5); /* Glowing text */
+    min-height: 2em; /* Ensure it takes up space even when empty */
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Smooth transitions */
+}
+
+/* ============================================= */
+/* == MINI-GAME: MERASAKAN (SPEKTRUM EMOSI) == */
+/* ============================================= */
+
+/* Styling for the modal overlay and its content */
+#empathize-modal {
+    background-color: rgba(15, 23, 42, 0.9); /* Very dark, slightly purplish overlay for Empathize theme */
+    backdrop-filter: blur(12px); /* Even stronger glassmorphism blur */
+    -webkit-backdrop-filter: blur(12px);
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* The actual modal content (using glass-card class) */
+#empathize-modal .modal-content {
+    animation: scaleIn 0.3s ease-out forwards;
+    /* Add specific shadow or border glow emphasizing emotional resonance */
+    box-shadow: 0 0 40px rgba(129, 140, 248, 0.5), 0 0 60px rgba(71, 85, 105, 0.4);
+    border-color: rgba(129, 140, 248, 0.7);
+}
+
+/* Styling for the Emotion Spectrum Canvas */
+#emotion-spectrum-canvas {
+    background: linear-gradient(90deg, rgba(71, 85, 105, 0.3) 0%, rgba(129, 140, 248, 0.4) 30%, rgba(167, 139, 250, 0.4) 70%, rgba(71, 85, 105, 0.3) 100%); /* Subtle emotional gradient */
+    border: 1px solid rgba(129, 140, 248, 0.6); /* Brand color border */
+    box-shadow: 0 0 15px rgba(129, 140, 248, 0.2), inset 0 0 10px rgba(129, 140, 248, 0.1); /* Soft glow */
+    transition: all 0.3s ease;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Styling for the Soul Marker */
+#soul-marker {
+    position: absolute; /* Already absolute in HTML, but reiterating */
+    z-index: 10; /* Ensure it's above the canvas */
+    box-shadow: 0 0 15px var(--brand-color), 0 0 25px var(--brand-color); /* Strong glow */
+    transition: left 0.2s ease-out, background-color 0.2s ease-in-out; /* Smooth movement and color change */
+}
+
+/* Styling for the Soul Tones Instrument Container */
+#soul-tones-instrument-container {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Responsive grid for tone buttons */
+    gap: 0.75rem; /* Slightly smaller gap for tone buttons */
+}
+
+/* Styling for individual Soul Tone Buttons (using glass-button) */
+/* No specific class needed here as `glass-button` handles general styling */
+
+/* Example of how tone-specific styles might look (JS would add these classes) */
+.tone-low-btn {
+    background: linear-gradient(135deg, rgba(55, 65, 81, 0.6), rgba(30, 41, 59, 0.6)); /* Darker, grounded */
+    border-color: rgba(71, 85, 105, 0.7);
+}
+.tone-low-btn:hover {
+    box-shadow: 0 0 10px rgba(71, 85, 105, 0.4);
+}
+
+.tone-mid-btn {
+    background: linear-gradient(135deg, rgba(129, 140, 248, 0.5), rgba(71, 85, 105, 0.5)); /* Balanced */
+    border-color: rgba(129, 140, 248, 0.6);
+}
+.tone-mid-btn:hover {
+    box-shadow: 0 0 15px rgba(129, 140, 248, 0.5);
+}
+
+.tone-high-btn {
+    background: linear-gradient(135deg, rgba(243, 244, 246, 0.3), rgba(129, 140, 248, 0.4)); /* Lighter, energetic */
+    border-color: rgba(243, 244, 246, 0.5);
+}
+.tone-high-btn:hover {
+    box-shadow: 0 0 20px rgba(243, 244, 246, 0.4);
+}
+
+
+/* Styling for the Emotional Feedback Message */
+#emotional-feedback-message {
+    font-family: var(--font-display);
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(129, 140, 248, 0.5); /* Glowing text */
+    min-height: 2em; /* Ensure it takes up space even when empty */
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+/* ============================================= */
+/* == MINI-GAME: MENGINSPIRASI (FOKUS MOTIVASI) == */
+/* ============================================= */
+
+/* Styling for the modal overlay and its content */
+#inspire-modal {
+    background-color: rgba(20, 30, 45, 0.9); /* Dark, slightly warm overlay for Inspire theme */
+    backdrop-filter: blur(12px); /* Stronger blur */
+    -webkit-backdrop-filter: blur(12px);
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* The actual modal content (using glass-card class) */
+#inspire-modal .modal-content {
+    animation: scaleIn 0.3s ease-out forwards;
+    /* Add specific shadow or border glow emphasizing golden/intention theme */
+    box-shadow: 0 0 40px rgba(253, 224, 71, 0.5), 0 0 60px rgba(129, 140, 248, 0.4); /* Gold/Indigo glow */
+    border-color: rgba(253, 224, 71, 0.7); /* Golden border */
+}
+
+/* Styling for the Motivation Choices Container (buttons) */
+#motivation-choices-container {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive grid for choice buttons */
+    gap: 1rem; /* Standard gap for choices */
+}
+
+/* Styling for individual Motivation Choice Buttons (using glass-button) */
+/* No specific class needed here as `glass-button` handles general styling */
+/* Example of how motivation-specific styles might look (JS would add these classes) */
+/* .motivation-courage-btn { } */
+/* .motivation-hope-btn { } */
+/* .motivation-perseverance-btn { } */
+
+/* Styling for the Will Injection Canvas */
+#will-injection-canvas {
+    background: linear-gradient(90deg, rgba(30, 41, 59, 0.8) 0%, rgba(253, 224, 71, 0.3) 50%, rgba(30, 41, 59, 0.8) 100%); /* Gold linear gradient for Will */
+    border: 1px solid var(--accent-gold); /* Golden border */
+    box-shadow: 0 0 15px var(--accent-gold), inset 0 0 10px var(--accent-gold); /* Golden glow */
+    transition: all 0.3s ease;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Styling for the NPC Motivation Feedback Message */
+#npc-motivation-feedback {
+    font-family: var(--font-display);
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 0 0 10px var(--accent-gold); /* Golden glowing text */
+    min-height: 2em; /* Ensure it takes up space even when empty */
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+/* ============================================= */
+/* == MINI-GAME: BERTUKAR (PERDAGANGAN UNIK) == */
+/* ============================================= */
+
+/* Styling for the modal overlay and its content */
+#barter-modal {
+    background-color: rgba(20, 30, 45, 0.9); /* Dark, slightly neutral/earthy overlay for Barter theme */
+    backdrop-filter: blur(12px); /* Stronger blur */
+    -webkit-backdrop-filter: blur(12px);
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* The actual modal content (using glass-card class) */
+#barter-modal .modal-content {
+    animation: scaleIn 0.3s ease-out forwards;
+    /* Add specific shadow or border glow emphasizing trade/connection */
+    box-shadow: 0 0 40px rgba(71, 85, 105, 0.5), 0 0 60px rgba(30, 41, 59, 0.4); /* Subtle grey/blue glow */
+    border-color: rgba(71, 85, 105, 0.7); /* Grey border */
+}
+
+/* Styling for the NPC Offerings Container */
+#npc-offerings-container {
+    background-color: rgba(17, 24, 39, 0.8); /* Dark background */
+    border: 1px solid var(--border-color); /* Standard border */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+    min-height: 150px; /* Ensure it has a minimum height */
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: grid; /* Use grid for layout of items */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive item grid */
+    gap: 0.75rem; /* Gap between items */
+}
+
+/* Styling for Player Inventory for Barter */
+#player-inventory-for-barter {
+    background-color: rgba(17, 24, 39, 0.8); /* Dark background */
+    border: 1px solid var(--border-color); /* Standard border */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+    min-height: 150px; /* Ensure it has a minimum height */
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: grid; /* Use grid for layout of items */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive item grid */
+    gap: 0.75rem; /* Gap between items */
+}
+
+/* Styling for individual items within offering/inventory (assuming glass-container) */
+#npc-offerings-container .glass-container,
+#player-inventory-for-barter .glass-container {
+    padding: 0.75rem; /* Adjust padding for items */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
+#player-inventory-for-barter .glass-container { /* Player items can be clicked */
+    cursor: pointer;
+}
+
+#player-inventory-for-barter .glass-container:hover {
+    background-color: rgba(30, 41, 59, 0.6); /* Slightly lighter on hover */
+    box-shadow: 0 0 10px rgba(129, 140, 248, 0.3), inset 0 0 5px rgba(129, 140, 248, 0.2); /* Subtle glow on hover */
+    transform: translateY(-2px);
+}
+
+/* Styling for the Barter Summary Message */
+#barter-summary-message {
+    font-family: var(--font-display);
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(129, 140, 248, 0.5); /* Glowing text */
+    min-height: 2em; /* Ensure it takes up space even when empty */
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+/* ============================================= */
+/* == MINI-GAME: MEMESAN (KERAJINAN KUSTOM) == */
+/* ============================================= */
+
+/* Styling for the modal overlay and its content */
+#commission-modal {
+    background-color: rgba(25, 35, 55, 0.9); /* Dark, slightly industrial/earthy overlay for Commission theme */
+    backdrop-filter: blur(12px); /* Stronger blur */
+    -webkit-backdrop-filter: blur(12px);
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* The actual modal content (using glass-card class) */
+#commission-modal .modal-content {
+    animation: scaleIn 0.3s ease-out forwards;
+    /* Add specific shadow or border glow emphasizing crafting/materials */
+    box-shadow: 0 0 40px rgba(71, 85, 105, 0.5), 0 0 60px rgba(30, 41, 59, 0.4); /* Subtle grey/blue glow */
+    border-color: rgba(71, 85, 105, 0.7); /* Grey border */
+}
+
+/* Styling for the Commission Recipes Container */
+#commission-recipes-container {
+    background-color: rgba(17, 24, 39, 0.8);
+    border: 1px solid var(--border-color);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    min-height: 150px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.75rem;
+}
+
+/* Styling for the Required Materials Display */
+#required-materials-display {
+    background-color: rgba(17, 24, 39, 0.8);
+    border: 1px solid var(--border-color);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    min-height: 150px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.75rem;
+}
+
+/* Styling for Player Materials for Commission */
+#player-materials-for-commission {
+    background-color: rgba(17, 24, 39, 0.8);
+    border: 1px solid var(--border-color);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    min-height: 150px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.75rem;
+}
+
+/* Styling for individual items within commission containers (assuming glass-container) */
+#commission-recipes-container .glass-container,
+#required-materials-display .glass-container,
+#player-materials-for-commission .glass-container {
+    padding: 0.75rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hover effects for clickable items */
+#commission-recipes-container .glass-container:hover,
+#player-materials-for-commission .glass-container:hover {
+    background-color: rgba(30, 41, 59, 0.6); /* Slightly lighter on hover */
+    box-shadow: 0 0 10px rgba(129, 140, 248, 0.3), inset 0 0 5px rgba(129, 140, 248, 0.2); /* Subtle glow on hover */
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+/* Styling for the Commission Feedback Message */
+#commission-feedback-message {
+    font-family: var(--font-display);
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(129, 140, 248, 0.5); /* Glowing text */
+    min-height: 2em; /* Ensure it takes up space even when empty */
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+/* ============================================= */
+/* == PETA DUNIA INTERAKTIF & INDIKATOR NEXUS == */
+/* ============================================= */
+
+/* Styling for the main world map container */
+#world-map-container {
+    /* Inherits glass-card styling */
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%), /* Dark base for cosmic feel */
+                radial-gradient(circle at 50% 50%, rgba(129, 140, 248, 0.1) 0%, transparent 80%), /* Subtle center glow */
+                url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKaggsAAAAFUlEQVQYV2NkgAFGMiMDzDQ0NAwABjwD/R4JqX0AAAAASUVORK5CYII=') repeat; /* Very subtle star/energy grid pattern */
+    background-size: cover, auto, 5px 5px;
+    background-position: center, center, center;
+    position: relative; /* Crucial for absolute positioning of markers */
+    min-height: 500px; /* Ensure map is visible */
+    overflow: hidden; /* Hide anything outside map boundaries */
+    box-shadow: 0 0 30px rgba(129, 140, 248, 0.3); /* Soft outer glow for the map itself */
+    border-color: rgba(129, 140, 248, 0.5); /* Matching border color */
+}
+
+/* Styling for region markers */
+.region-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem; /* Larger touch target */
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.8); /* White border for contrast */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Subtle white glow */
+    transition: all 0.3s ease-in-out;
+    font-size: 0.8rem; /* Smaller font for initial text */
+    font-weight: bold;
+    color: white; /* Default text color */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8); /* Text shadow for readability */
+}
+
+.region-marker:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    box-shadow: 0 0 15px var(--brand-color), 0 0 25px var(--brand-color); /* Stronger glow on hover */
+    border-color: var(--brand-color); /* Highlight border on hover */
+    cursor: pointer;
+}
+
+/* Specific styles for Nexus Status */
+.region-marker.sanctum {
+    background-color: rgba(34, 197, 94, 0.7); /* Emerald green */
+    border-color: rgba(34, 197, 94, 0.9);
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+}
+
+.region-marker.sanctum:hover {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.8), 0 0 30px rgba(34, 197, 94, 0.5);
+}
+
+.region-marker.maelstrom {
+    background-color: rgba(248, 113, 113, 0.7); /* Red */
+    border-color: rgba(248, 113, 113, 0.9);
+    box-shadow: 0 0 10px rgba(248, 113, 113, 0.6);
+    animation: glitch-glow 1s infinite alternate; /* Glitch effect */
+}
+
+.region-marker.maelstrom:hover {
+    box-shadow: 0 0 20px rgba(248, 113, 113, 0.8), 0 0 30px rgba(248, 113, 113, 0.5);
+}
+
+@keyframes glitch-glow {
+    0% {
+        box-shadow: 0 0 10px rgba(248, 113, 113, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(248, 113, 113, 0.8), 0 0 2px rgba(255, 255, 255, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(248, 113, 113, 0.6);
+    }
+}
+
+.region-marker.balanced {
+    background-color: rgba(148, 163, 184, 0.7); /* Slate-400 */
+    border-color: rgba(148, 163, 184, 0.9);
+    box-shadow: 0 0 10px rgba(148, 163, 184, 0.6);
+}
+
+.region-marker.balanced:hover {
+    box-shadow: 0 0 20px rgba(148, 163, 184, 0.8), 0 0 30px rgba(148, 163, 184, 0.5);
+}
+
+
+/* Styling for the Region Detail Panel */
+#region-detail-panel {
+    /* Inherits glass-card styling */
+    position: absolute; /* Already absolute in HTML, but reiterating */
+    z-index: 20; /* Ensure it's above markers */
+    min-width: 250px;
+    opacity: 0; /* Hidden by default, JS will manage visibility */
+    transform: translateY(20px); /* Slide up animation */
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+#region-detail-panel.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#detail-nexus-status {
+    font-weight: bold;
+}
+/* Colors for Nexus status text in detail panel, will be applied by JS */
+.text-sanctum {
+    color: #34d399; /* Emerald-400 */
+}
+.text-maelstrom {
+    color: #ef4444; /* Red-500 */
+}
+.text-balanced {
+    color: #94a3b8; /* Slate-400 */
+}
+
+/* Styling for Map Navigation/Interaction Buttons */
+.map-nav-button {
+    /* Inherits glass-button styling */
+    z-index: 20; /* Ensure it's above the map */
+    min-width: unset; /* Override default min-width for smaller buttons */
+    padding: 0.5rem; /* Adjust padding */
+}
+
+/* Specific positioning for example buttons (already in HTML) */
+/* #map-zoom-in, #map-zoom-out */
+
+/* General styling for map elements if needed to ensure consistency */
+#world-map-container h3, #world-map-container p {
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /* Add text shadow for readability on cosmic background */
+}
+
+/* ============================================= */
+/* == FORGER UI SPECIFICS (MANAJEMEN WAHYU) == */
+/* ============================================= */
+
+/* Styling for the main content area of Revelations Workshop (Encounters) */
+/* This will be the direct container for the form and list */
+#forger-page-container .glass-card {
+    /* Assuming this is applied to the direct parent of the form/list */
+    background: linear-gradient(160deg, rgba(17, 24, 39, 0.7) 0%, rgba(30, 41, 59, 0.8) 100%); /* Dark, deep blue/purple gradient */
+    border-color: rgba(71, 85, 105, 0.6); /* Slightly more prominent border */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(129, 140, 248, 0.1); /* Stronger shadow with inner glow */
+}
+
+/* Styling for the form's main title */
+#form-title {
+    color: var(--text-title);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Styling for dynamically added encounter choice inputs */
+#new-encounter-choices-container .glass-container {
+    background: rgba(17, 24, 39, 0.5); /* Slightly less opaque for nested glass elements */
+    border-color: rgba(71, 85, 105, 0.3);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the remove choice button */
+.remove-choice-btn {
+    background-color: var(--accent-red); /* Red background for delete */
+    border-color: var(--accent-red);
+    color: white;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    min-width: unset; /* Allow button to be smaller */
+}
+.remove-choice-btn:hover {
+    background-color: rgba(248, 113, 113, 0.8);
+    box-shadow: 0 0 10px rgba(248, 113, 113, 0.5);
+}
+
+/* Styling for the existing encounters list items */
+#existing-encounters-list .glass-card {
+    background: rgba(30, 41, 59, 0.6); /* Slightly lighter background for list items */
+    border-color: rgba(71, 85, 105, 0.4);
+    transition: all 0.3s ease;
+}
+
+#existing-encounters-list .glass-card:hover {
+    background-color: rgba(30, 41, 59, 0.8);
+    box-shadow: 0 0 15px rgba(129, 140, 248, 0.2);
+}
+
+/* Styling for edit and delete buttons in the list */
+.edit-encounter-btn, .delete-encounter-btn {
+    font-size: 0.85em; /* Smaller font for action buttons */
+    padding: 0.6em 1.2em;
+    min-width: unset;
+}
+.edit-encounter-btn {
+    background-color: rgba(129, 140, 248, 0.7); /* Brand color for edit */
+    border-color: var(--brand-color);
+    color: white;
+}
+.edit-encounter-btn:hover {
+    background-color: var(--brand-color);
+    box-shadow: 0 0 10px rgba(129, 140, 248, 0.5);
+}
+.delete-encounter-btn {
+    background-color: var(--accent-red); /* Red for delete */
+    border-color: var(--accent-red);
+    color: white;
+}
+.delete-encounter-btn:hover {
+    background-color: rgba(248, 113, 113, 0.8);
+    box-shadow: 0 0 10px rgba(248, 113, 113, 0.5);
+}
+
+/* ============================================= */
+/* == FORGER UI SPECIFICS (MANAJEMEN PERMOHONAN JIWA) == */
+/* ============================================= */
+
+/* Styling for the main content area of Soul Petitions */
+/* This will be the direct container for the pending/responded lists */
+#forger-page-container .glass-card.petitions-container {
+    background: linear-gradient(160deg, rgba(17, 24, 39, 0.6) 0%, rgba(30, 41, 59, 0.7) 100%), /* Softer gradient */
+                radial-gradient(circle at 50% 20%, rgba(129, 140, 248, 0.05) 0%, transparent 80%); /* Subtle light from top */
+    border-color: rgba(71, 85, 105, 0.5); /* Slightly softer border */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(129, 140, 248, 0.08); /* Softer shadow with inner glow */
+}
+
+/* Styling for individual petition items */
+#pending-petitions-list .glass-card,
+#responded-petitions-list .glass-card {
+    background: rgba(30, 41, 59, 0.7); /* Standard glass card background */
+    border-color: rgba(71, 85, 105, 0.4);
+    transition: all 0.3s ease;
+}
+
+#pending-petitions-list .glass-card:hover {
+    background-color: rgba(30, 41, 59, 0.9);
+    box-shadow: 0 0 15px rgba(129, 140, 248, 0.2);
+}
+
+/* Specific styling for responded petitions */
+#responded-petitions-list .glass-card {
+    opacity: 0.7; /* Slightly faded */
+    filter: grayscale(0.3); /* Slightly desaturated */
+    pointer-events: none; /* Make them non-interactive */
+}
+
+/* Styling for respond buttons */
+.respond-petition-btn {
+    font-size: 0.85em;
+    padding: 0.6em 1.2em;
+    min-width: unset;
+}
+
+.respond-petition-btn[data-action="grant"] {
+    background: var(--glass-secondary-button-bg); /* Use secondary button color (green) */
+    border-color: rgba(34, 197, 94, 0.8);
+    color: white;
+}
+.respond-petition-btn[data-action="grant"]:hover {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.8), rgba(20, 83, 45, 0.8));
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+}
+
+.respond-petition-btn[data-action="deny"] {
+    background-color: var(--accent-red); /* Red for deny */
+    border-color: var(--accent-red);
+    color: white;
+}
+.respond-petition-btn[data-action="deny"]:hover {
+    background-color: rgba(248, 113, 113, 0.8);
+    box-shadow: 0 0 10px rgba(248, 113, 113, 0.5);
+}
+
+/* ============================================= */
+/* == FORGER UI SPECIFICS (TEMPAAN ARTEFAK) == */
+/* ============================================= */
+
+/* Styling for the main content area of Artifact Forging */
+#forger-page-container .glass-card.artifacts-container {
+    background: linear-gradient(160deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%), /* Darker, more metallic gradient */
+                radial-gradient(circle at 50% 100%, rgba(253, 224, 71, 0.05) 0%, transparent 80%); /* Subtle golden glow from bottom (anvil light) */
+    border-color: rgba(71, 85, 105, 0.7); /* Stronger grey border */
+    box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.6), inset 0 0 25px rgba(253, 224, 71, 0.1); /* Stronger shadow with golden inner glow */
+}
+
+/* Styling for artifact form elements */
+#artifact-form .glass-input {
+    /* Inherits general glass-input styles */
+}
+
+/* Styling for add/remove effect buttons */
+#add-effect-btn {
+    background: var(--glass-secondary-button-bg); /* Green for add */
+    border-color: rgba(34, 197, 94, 0.8);
+    color: white;
+}
+#add-effect-btn:hover {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.8), rgba(20, 83, 45, 0.8));
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+}
+
+.remove-effect-btn {
+    background-color: var(--accent-red); /* Red for remove */
+    border-color: var(--accent-red);
+    color: white;
+}
+.remove-effect-btn:hover {
+    background-color: rgba(248, 113, 113, 0.8);
+    box-shadow: 0 0 10px rgba(248, 113, 113, 0.5);
+}
+
+/* Styling for passive effect inputs (key/value) */
+.passive-effect-group .glass-input {
+    margin-right: 0.5rem; /* Small gap between key and value */
+}
+
+/* Styling for main action buttons (forge, update, cancel) */
+#create-artifact-btn {
+    background: var(--glass-primary-button-bg); /* Primary color for create */
+    border-color: var(--brand-color);
+    color: white;
+}
+#create-artifact-btn:hover {
+    background: linear-gradient(135deg, var(--brand-color), rgba(129, 140, 248, 0.9));
+    box-shadow: 0 6px 20px rgba(129, 140, 248, 0.6);
+}
+
+#update-artifact-btn {
+    background: var(--glass-secondary-button-bg); /* Secondary color for update */
+    border-color: rgba(34, 197, 94, 0.8);
+    color: white;
+}
+#update-artifact-btn:hover {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.8), rgba(20, 83, 45, 0.8));
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
+}
+
+#cancel-artifact-edit-btn {
+    background-color: var(--glass-bg-color); /* Standard glass button for cancel */
+    border-color: var(--glass-border-color);
+    color: var(--text-secondary);
+}
+#cancel-artifact-edit-btn:hover {
+    background-color: rgba(17, 24, 39, 0.5);
+    border-color: var(--brand-color);
+    color: var(--text-title);
+    box-shadow: 0 0 15px rgba(129, 140, 248, 0.3);
+}
+
+/* Styling for the existing artifacts list items */
+#existing-artifacts-list .glass-card {
+    background: rgba(30, 41, 59, 0.6); /* Slightly lighter background for list items */
+    border-color: rgba(71, 85, 105, 0.4);
+    transition: all 0.3s ease;
+}
+
+#existing-artifacts-list .glass-card:hover {
+    background-color: rgba(30, 41, 59, 0.8);
+    box-shadow: 0 0 15px rgba(253, 224, 71, 0.2); /* Subtle golden glow on hover */
+}
+
+/* Styling for edit and delete buttons in the list */
+.edit-artifact-btn, .delete-artifact-btn {
+    font-size: 0.85em; /* Smaller font for action buttons */
+    padding: 0.6em 1.2em;
+    min-width: unset;
+}
+.edit-artifact-btn {
+    background-color: rgba(129, 140, 248, 0.7); /* Brand color for edit */
+    border-color: var(--brand-color);
+    color: white;
+}
+.edit-artifact-btn:hover {
+    background-color: var(--brand-color);
+    box-shadow: 0 0 10px rgba(129, 140, 248, 0.5);
+}
+.delete-artifact-btn {
+    background-color: var(--accent-red); /* Red for delete */
+    border-color: var(--accent-red);
+    color: white;
+}
+.delete-artifact-btn:hover {
+    background-color: rgba(248, 113, 113, 0.8);
+    box-shadow: 0 0 10px rgba(248, 113, 113, 0.5);
+}
+
+/* ============================================= */
+/* == FORGER UI SPECIFICS (TENUNAN NUBUTAT) == */
+/* ============================================= */
+
+/* Styling for the main content area of Prophecies Weaving */
+#forger-page-container .glass-card.prophecies-container {
+    background: linear-gradient(160deg, rgba(15, 23, 42, 0.7) 0%, rgba(30, 41, 59, 0.8) 100%), /* Dark, mystical gradient for prophecy */
+                radial-gradient(circle at 50% 50%, rgba(167, 139, 250, 0.05) 0%, transparent 80%), /* Subtle purple glow */
+                url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAFklEQVQYV2NkYGDYBYQA/M/IggCAgQAEACaSAIuX/t5oAAAAAElFTkSuQmCC') repeat; /* Very subtle parchment-like pattern */
+    background-size: cover, auto, 5px 5px;
+    background-position: center, center, center;
+    border-color: rgba(167, 139, 250, 0.6); /* Mystical purple border */
+    box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.6), inset 0 0 25px rgba(167, 139, 250, 0.1); /* Stronger shadow with purple inner glow */
+}
+
+/* Styling for prophecy form elements */
+#prophecy-form .glass-input {
+    /* Inherits general glass-input styles */
+}
+
+/* Styling for the prophecy target dropdown (select element) */
+#prophecy-target-wanderer {
+    background: var(--glass-input-bg) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat right 0.75rem center;
+    background-size: 1.25rem;
+    padding-right: 2.5rem; /* Make space for the icon */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+/* Styling for the placeholder text when no wanderers are available */
+#prophecy-target-wanderer option[disabled]:first-child {
+    color: var(--text-secondary); /* Grey out placeholder */
+}
+
+/* Styling for the Sigil/Icon input */
+#prophecy-sigil {
+    /* Inherits general glass-input styles */
+    font-family: 'Cinzel', serif; /* Use display font for sigil */
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Styling for the send prophecy button */
+#send-prophecy-btn {
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.7), rgba(129, 140, 248, 0.7)); /* Purple/Indigo gradient */
+    border-color: rgba(167, 139, 250, 0.8);
+    color: white;
+}
+#send-prophecy-btn:hover {
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.9), rgba(129, 140, 248, 0.9));
+    box-shadow: 0 6px 20px rgba(167, 139, 250, 0.6);
+}
+
+/* Styling for the existing sent prophecies list */
+#sent-prophecies-list .glass-card {
+    background: rgba(30, 41, 59, 0.6); /* Slightly lighter background for list items */
+    border-color: rgba(71, 85, 105, 0.4);
+    transition: all 0.3s ease;
+}
+
+#sent-prophecies-list .glass-card:hover {
+    background-color: rgba(30, 41, 59, 0.8);
+    box-shadow: 0 0 15px rgba(167, 139, 250, 0.2); /* Subtle purple glow on hover */
+}
+
+/* Styling for prophecy title and text */
+.prophecy-item-title {
+    font-family: var(--font-display);
+    color: var(--text-title);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.prophecy-item-text {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 0.95em;
+}
+
+/* Styling for prophecy sigil/icon in list items */
+.prophecy-item-sigil {
+    font-family: var(--font-display);
+    font-size: 1.5em; /* Larger size for sigil */
+    color: rgba(167, 139, 250, 0.8); /* Mystical purple color */
+    text-shadow: 0 0 10px rgba(167, 139, 250, 0.6); /* Glowing effect */
+}
+
+/* ============================================= */
+/* == FORGER UI SPECIFICS (OBSERVATORIUM KOSMIK & TEMPAAN DUNIA) == */
+/* ============================================= */
+
+/* Styling for the main content area of Cosmic Observatory */
+#forger-page-container .glass-card.observatory-container {
+    background: linear-gradient(160deg, rgba(15, 23, 42, 0.7) 0%, rgba(30, 41, 59, 0.8) 100%), /* Dark, cosmic gradient */
+                radial-gradient(circle at 50% 50%, rgba(129, 140, 248, 0.1) 0%, transparent 80%), /* Subtle center glow */
+                url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKaggsAAAAFUlEQVQYV2NkgAFGMiMDzDQ0NAwABjwD/R4JqX0AAAAASUVORK5CYII=') repeat; /* Very subtle star/energy grid pattern */
+    background-size: cover, auto, 5px 5px;
+    background-position: center, center, center;
+    border-color: rgba(129, 140, 248, 0.6); /* Brand color border */
+    box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.6), inset 0 0 25px rgba(129, 140, 248, 0.1); /* Stronger shadow with inner glow */
+}
+
+/* Styling for the Soul Leaderboard table */
+#wanderer-list-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#wanderer-list-table th,
+#wanderer-list-table td {
+    padding: 0.75em;
+    text-align: left;
+    border-bottom: 1px solid var(--glass-border-color); /* Subtle dividers */
+}
+
+/* Styling for specific columns */
+.col-soul-rank, .col-soul-name {
+    font-family: var(--font-display);
+    color: var(--text-title);
+}
+
+.col-alignment {
+    font-weight: bold;
+}
+.col-alignment.sanctum-text {
+    color: #34d399; /* Emerald-400 */
+}
+.col-alignment.maelstrom-text {
+    color: #ef4444; /* Red-500 */
+}
+.col-alignment.balanced-text {
+    color: #94a3b8; /* Slate-400 */
+}
+
+/* Styling for sorting dropdown */
+#sort-souls-by {
+    /* Inherits glass-input styles, maybe add custom arrow for visual consistency */
+    background: var(--glass-input-bg) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat right 0.75rem center;
+    background-size: 1.25rem;
+    padding-right: 2.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+/* Styling for refresh button */
+#refresh-souls-list {
+    /* Inherits glass-button styles */
+}
+
+/* Styling for Region Nexus Status List (Observatory Page) */
+#regions-status-list {
+    /* Inherits glass-container or similar, flex for layout */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#regions-status-list .region-status-item {
+    flex: 1 1 calc(50% - 0.5rem); /* Two columns on larger screens */
+    min-width: 250px; /* Minimum width for readability */
+    /* Inherits glass-card properties */
+    padding: 1em;
+}
+
+@media (min-width: 1024px) {
+    #regions-status-list .region-status-item {
+        flex: 1 1 calc(33.333% - 0.666rem); /* Three columns on desktop */
+    }
+}
+
+/* Styling for the World Forge container */
+#forger-page-container .glass-card.world-forge-container {
+    background: linear-gradient(160deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%), /* Very dark, firm gradient */
+                url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQYV2NkYGCQ/wGfQGJgYEhwAQAKlQIEkUDdYAAAAABJRU5ErkJggg==') repeat; /* Subtle circuit-like pattern */
+    background-size: cover, 8px 8px;
+    background-position: center, center;
+    border-color: rgba(129, 140, 248, 0.7); /* Stronger brand color border */
+    box-shadow: 0 8px 45px 0 rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(129, 140, 248, 0.2); /* Very strong shadow with inner glow */
+}
+
+/* Styling for world settings form elements */
+#world-settings-form .glass-input {
+    /* Inherits general glass-input styles */
+}
+
+/* Styling for save world settings button */
+#save-world-settings-button {
+    /* Inherits glass-button primary-button styles */
+}
+
+/* ============================================= */
+/* == FORGER UI SPECIFICS (AULA PARA PENJAGA) == */
+/* ============================================= */
+
+/* Styling for the main content area of Guardians Hall */
+#forger-page-container .glass-card.guardians-container {
+    background: linear-gradient(160deg, rgba(30, 41, 59, 0.75) 0%, rgba(15, 23, 42, 0.85) 100%), /* Dark greyish-blue gradient */
+                radial-gradient(circle at 50% 50%, rgba(148, 163, 184, 0.05) 0%, transparent 80%), /* Subtle stone pattern light */
+                url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAG0lEQVQYV2NkgABGMjIy/k/w//+fQFIwMDAwAQB0oAEUj7R+AAAAAElFTkSuQmCC') repeat; /* Subtle shield-like pattern */
+    background-size: cover, auto, 8px 8px;
+    background-position: center, center, center;
+    border-color: rgba(148, 163, 184, 0.6); /* Grey stone-like border */
+    box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.6), inset 0 0 25px rgba(148, 163, 184, 0.1); /* Stronger shadow with grey inner glow */
+}
+
+/* Styling for the Guardians List table */
+#guardians-list-container {
+    /* Ensure this acts as a proper container for the table if not already done by HTML */
+}
+
+#guardians-table-body {
+    /* Direct parent of table rows */
+}
+
+#guardians-table-body .glass-table-row {
+    /* Inherits general glass-table-row styles */
+}
+
+/* Specific styling for guardian detail columns */
+.col-guardian-name, .col-guardian-rank {
+    font-family: var(--font-display);
+    color: var(--text-title);
+}
+
+.col-guardian-status {
+    font-weight: bold;
+}
+/* Reusing Nexus status colors for Guardian status if applicable, or define new ones */
+.col-guardian-status.active-status {
+    color: #34d399; /* Green for active */
+}
+.col-guardian-status.inactive-status {
+    color: #ef4444; /* Red for inactive */
+}
+.col-guardian-status.on-duty-status {
+    color: #fde047; /* Gold for on duty */
+}
+
+/* Styling for management buttons (add, edit, delete Guardian) */
+.add-guardian-btn, .edit-guardian-btn, .delete-guardian-btn {
+    font-size: 0.85em;
+    padding: 0.6em 1.2em;
+    min-width: unset;
+}
+
+.add-guardian-btn {
+    background: var(--glass-secondary-button-bg); /* Green for add */
+    border-color: rgba(34, 197, 94, 0.8);
+    color: white;
+}
+.add-guardian-btn:hover {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.8), rgba(20, 83, 45, 0.8));
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+}
+
+.edit-guardian-btn {
+    background-color: rgba(129, 140, 248, 0.7); /* Brand color for edit */
+    border-color: var(--brand-color);
+    color: white;
+}
+.edit-guardian-btn:hover {
+    background-color: var(--brand-color);
+    box-shadow: 0 0 10px rgba(129, 140, 248, 0.5);
+}
+
+.delete-guardian-btn {
+    background-color: var(--accent-red); /* Red for delete */
+    border-color: var(--accent-red);
+    color: white;
+}
+.delete-guardian-btn:hover {
+    background-color: rgba(248, 113, 113, 0.8);
+    box-shadow: 0 0 10px rgba(248, 113, 113, 0.5);
+}
