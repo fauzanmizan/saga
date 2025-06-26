@@ -155,9 +155,9 @@ import { updateDocument } from '../../firebaseService.js';
 import { WorldManager } from '../../worldManager.js';
 import { SKILL_TREE_DATA, GLOBAL_ATTRIBUTES, BIRTH_QUESTIONS, INTERROGATION_DATA, NPC_REPUTATION_LEVELS, NPC_HEALTH_STATES, NPC_LIFESTAGES, TRADABLE_ITEMS_DATA, COSMIC_CYCLES, WORLD_LANDMARKS, REGIONS_DATA, NPC_ROLES, NPC_PERSONALITY_TRAITS, JOURNAL_ENTRY_TEMPLATES } from '../../gameData.js'; // Import data baru
 import { InterrogateGame, ChallengeGame, InspireGame, BarterGame, CommissionGame, AbsorbEchoGame, EmpathizeGame } from '../../features/wanderer/wandererGameLogic.js';
-import { initializeNpcInteraction, triggerNpcDialogue } from './npcInteraction.js';
+import { initializeNpcInteraction, triggerNpcDialogue } from '../../features/wanderer/npcInteraction.js';
 import { initializeQuestManager, checkQuestCompletion } from './questManager.js';
-import { gameTime } from '../../utils.js';
+import { gameTime } from '../utils.js';
 import { addToWandererChronicle } from '../../chronicleManager.js';
 
 // Global variable for Lucide Icons
