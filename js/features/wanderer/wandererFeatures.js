@@ -51,10 +51,10 @@
 // - Menambahkan fungsi calculateAndApplyLegacy() untuk menghitung dan menyimpan Poin Legacy saat Apoteosis.
 // ===========================================
 
-import { UIManager } from './uiManager.js';
-import { getCurrentUser, setCurrentUser, logout } from './authService.js';
-import { updateDocument, setDocument } from './firebaseService.js';
-import { WorldManager } from './worldManager.js';
+import { UIManager } from '../../uiManager.js'; // Perbaikan jalur
+import { getCurrentUser, setCurrentUser, logout } from '../../authService.js'; // Perbaikan jalur
+import { updateDocument, setDocument } from '../../firebaseService.js'; // Perbaikan jalur
+import { WorldManager } from '../../worldManager.js'; // Perbaikan jalur
 import { SKILL_TREE_DATA, GLOBAL_ATTRIBUTES, BIRTH_QUESTIONS, INTERROGATION_DATA, LEGACY_CRITERIA } from './gameData.js'; // Import LEGACY_CRITERIA
 import { InterrogateGame } from './miniGames/interrogateGame.js';
 import { AbsorbEchoGame } from './miniGames/absorbEchoGame.js';
