@@ -1,9 +1,11 @@
 // js/data/npcs.js
 // == MODIFIED BY: Tim 3.A ==
-// == TANGGAL: 2025-06-27, 12:26 WITA ==
-// == PERIHAL: Refactoring GameData.js - Pemindahan Data NPC ke npcs.js ==
+// == TANGGAL: 2025-06-27, 03:20 WITA ==
+// == PERIHAL: Refactoring GameData.js - Pemindahan Data Faksi ke npcs.js ==
 // - Menampung semua data statis terkait NPC, life stages, health states, factions, archetypes, dll.
+// - Memindahkan FACTIONS_DATA dari gameData.js.
 // ===========================================
+// (Catatan perubahan lama lainnya akan tetap di bawah ini)
 
 /**
  * @typedef {object} NpcLifeStage
