@@ -82,8 +82,8 @@ import { getDocument, setDocument, updateDocument } from './firebaseService.js';
 import { UIManager } from './uiManager.js';
 import { AuthService, setSaveDB, getCurrentUser, setCurrentUser } from './authService.js';
 import { WorldManager } from './worldManager.js'; // Updated import path to the proxy
-import { WandererFeatures } from './wandererFeatures.js';
-import { ForgerFeatures } from './forgerFeatures.js';
+import { WandererFeatures } from './features/wanderer/wandererFeatures.js';
+import { ForgerFeatures } from './features/forger/forgerFeatures.js';
 import { FACTION_TYPES } from './gameData.js'; // Keep for defaultDB if needed in App.loadDB
 
 // Bagian 2: Objek App - Jantung Operasi
