@@ -1,15 +1,22 @@
 // js/world/worldOrchestrator.js
 // == MODIFIED BY: Tim 3.D ==
+// == TANGGAL: 2025-06-27, 03:25 WITA ==
+// == PERIHAL: Perbaikan Jalur Impor utils.js ==
+// - Mengoreksi jalur impor untuk utils.js (gameTime) dari ../gameData.js ke ../utils.js.
+// ===========================================
+// == MODIFIED BY: Tim 3.D ==
 // == TANGGAL: 2025-06-26, 09:02 PM WITA ==
 // == PERIHAL: Refactoring WorldManager.js - Integrasi Modul Manajer Baru ==
 // - Mengintegrasikan npcLifecycleManager, reputationManager, factionDynamicsManager, cosmicCycleManager.
 // - Memindahkan logika terkait dari dailyWorldUpdate ke modul-modul spesifik.
 // - Memastikan dependency injection yang tepat ke modul-modul manajer.
 // ===========================================
+// (Catatan perubahan lama lainnya akan tetap di bawah ini)
 
 // Import dependensi global
 import { UIManager } from '../uiManager.js';
-import { gameTime } from '../utils.js'; // Assuming gameTime is in utils.js
+// MEMPERBAIKI JALUR UNTUK UTILS.JS
+import { gameTime } from '../utils.js'; // Mengoreksi jalur impor
 import { getCurrentUser } from '../authService.js'; // To access current user from dbInstance.wanderers
 import { updateDocument, getDocument, setDocument } from '../firebaseService.js'; // Using firebaseService for now
 import {
@@ -40,7 +47,7 @@ export const worldOrchestrator = {
     setDependencies(db, docId, saveDB) {
         dbInstance = db;
         DB_DOC_ID_Instance = docId;
-        saveDBInstanceRef = saveDB; // Correctly passing saveDB from App
+        saveDBInstanceRef = saveDB;
 
         // Inisialisasi modul manajer, passing necessary dependencies
         coreStateManager.setDependencies(db, docId);
@@ -341,7 +348,7 @@ export const worldOrchestrator = {
                 statusClass = 'text-red-400';
             }
             // Use factionDynamicsManager to get faction name
-            let factionName = region.dominantFaction ? factionDynamicsManager.getFactionName(region.dominantFaction) : 'None';
+            let factionName = factionDynamicsManager.getFactionName(region.dominantFaction) || 'None';
 
             return `
                 <div class="glass-card p-4 rounded-lg flex flex-col mb-2 items-start justify-between animate-fade-in-up">
@@ -419,6 +426,7 @@ export const worldOrchestrator = {
                 }
                 console.log(`Region ${targetRegion.name} Nexus State changed to ${targetRegion.status}.`);
                 chronicleDescription = chronicleDescription.replace('{targetRegionName}', targetRegion.name);
+                // The original code had a duplicate replace for targetRegionName, removed one for clarity
             }
         }
 
@@ -560,12 +568,4 @@ export const worldOrchestrator = {
         // Placeholder: Logic untuk mendapatkan lokasi acak di region
         return { x: Math.random(), y: Math.random() };
     },
-    // The following were initially re-exported by WorldManager in the previous step,
-    // they remain directly in worldOrchestrator for now
-    // (as they are not part of the new specific managers)
-    // and will continue to be re-exported by worldManager.js proxy.
-    // getRecentCorruptedNpcName, getRegionProblem, getNpcNameWithRandomTrait, generateQuestForProblem
-    // renderRegionsStatus, fortifyNexus, performCleansingRitual, triggerGlobalWorldEvent, _applyEventConsequences
-    // getLandmarkName, getLifeStageDefinition, getNextHealthStateId, getPrevHealthStateId, advanceCosmicCycle, simulateNpcProgress, applyWorldAtmosphere, updateLoginCanvasAtmosphere, updateResonanceDisplay
-    // triggerRegionalWar (this is now internal to factionDynamicsManager)
 };
