@@ -157,7 +157,7 @@ import { SKILL_TREE_DATA, GLOBAL_ATTRIBUTES, BIRTH_QUESTIONS, INTERROGATION_DATA
 import { InterrogateGame, ChallengeGame, InspireGame, BarterGame, CommissionGame, AbsorbEchoGame, EmpathizeGame } from '../../features/wanderer/wandererGameLogic.js';
 import { initializeNpcInteraction, triggerNpcDialogue } from '../../features/wanderer/npcInteraction.js';
 import { initializeQuestManager, checkQuestCompletion } from './questManager.js';
-import { gameTime } from '../../utils.js';
+import { gameTime } from '../../features/utils.js';
 import { addToWandererChronicle } from '../../chronicleManager.js';
 
 // Global variable for Lucide Icons
