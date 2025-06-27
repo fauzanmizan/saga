@@ -1,6 +1,12 @@
 // js/features/wanderer/wandererPageRenderer.js
 
 // == MODIFIED BY: Tim 3.A ==
+// == TANGGAL: 2025-06-27, 05:40 WITA ==
+// == PERIHAL: Perbaikan Scope dbInstance dan Referensi Data Global ==
+// - Menghapus deklarasi 'let dbInstance;' yang berlebihan di awal modul.
+// - Memastikan akses ke dbInstance.wanderer atau dbInstance.currentUser di tempat yang tepat.
+// ===========================================
+// == MODIFIED BY: Tim 3.A ==
 // == TANGGAL: 2025-06-24, [Jam:Menit] ==
 // == PERIHAL: Implementasi Fase IV - Narasi Dinamis & Sistem Warisan Awal ==
 // ===========================================
@@ -160,7 +166,8 @@ import { AbsorbEchoGame } from '../../miniGames/absorbEchoGame.js';
 import { WandererPageRenderer } from './wandererPageRenderer.js';
 import { addToWandererChronicle } from '../../chronicleManager.js';
 
-let dbInstance;
+// HAPUS BARIS INI:
+// let dbInstance;
 let saveDBInstance;
 let destinyClockIntervalInstance;
 
@@ -207,7 +214,7 @@ export const WandererFeatures = {
 // and lucide.createIcons() called after rendering new content.
 
 // === Variabel Lokal Modul ===
-let dbInstance;
+let dbInstanceRef; // Ganti dengan nama yang jelas agar tidak bingung
 let saveDBInstanceRef;
 let UIManagerRef;
 let WorldManagerRef;
@@ -258,22 +265,22 @@ export const WandererPageRenderer = {
     _tabClickHandler: null,
 
     setDependencies(db, saveDB, uiM, worldM, gt) {
-        dbInstance = db;
+        dbInstanceRef = db; // Gunakan dbInstanceRef
         saveDBInstanceRef = saveDB;
         UIManagerRef = uiM;
         WorldManagerRef = worldM;
         gameTimeRef = gt;
 
-        // Initialize mini-game dependencies
-        InterrogateGame.setDependencies(dbInstance, saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer); // Add WandererPageRenderer
-        AbsorbEchoGame.setDependencies(dbInstance, saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer); // Add WandererPageRenderer
-        ChallengeGame.setDependencies(dbInstance, saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer); // Add WandererPageRenderer
-        InspireGame.setDependencies(dbInstance, saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer); // Add WandererPageRenderer
-        BarterGame.setDependencies(dbInstance, saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer); // Add WandererPageRenderer
-        CommissionGame.setDependencies(dbInstance, saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer); // Add WandererPageRenderer
-        EmpathizeGame.setDependencies(dbInstance, saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer); // Add WandererPageRenderer
-        initializeNpcInteraction(dbInstance, UIManagerRef, WorldManagerRef, WandererPageRenderer, gameTimeRef, addToWandererChronicle);
-        initializeQuestManager(dbInstance, saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer, gameTimeRef);
+        // ... (inisialisasi mini-game dependencies, gunakan dbInstanceRef) ...
+        InterrogateGame.setDependencies(dbInstanceRef, 'soulforgeSaga_v2.0_KitabAgung', saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer);
+        AbsorbEchoGame.setDependencies(dbInstanceRef, saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer);
+        ChallengeGame.setDependencies(dbInstanceRef, saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer);
+        InspireGame.setDependencies(dbInstanceRef, saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer);
+        BarterGame.setDependencies(dbInstanceRef, saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer);
+        CommissionGame.setDependencies(dbInstanceRef, saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer);
+        EmpathizeGame.setDependencies(dbInstanceRef, saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer);
+        initializeNpcInteraction(dbInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer, gameTimeRef, addToWandererChronicle);
+        initializeQuestManager(dbInstanceRef, saveDBInstanceRef, UIManagerRef, WorldManagerRef, WandererPageRenderer, gameTimeRef);
     },
 
     renderWandererNav(currentPageId) {
@@ -627,7 +634,8 @@ export const WandererPageRenderer = {
         if (!npcListContainer) return;
 
         npcListContainer.innerHTML = '<h3 class="text-xl font-serif font-bold text-white mb-4">NPC di Wilayah Ini:</h3>';
-        const npcsInRegion = Object.values(dbInstance.npc_souls || {}).filter(npc => npc.currentRegion === regionId); // Use npc_souls
+        // Gunakan dbInstanceRef di sini
+        const npcsInRegion = Object.values(dbInstanceRef.npc_souls || {}).filter(npc => npc.currentRegion === regionId);
 
         if (npcsInRegion.length === 0) {
             npcListContainer.innerHTML += '<p class="text-slate-500 italic">Tidak ada NPC di sini saat ini.</p>';
@@ -2111,18 +2119,18 @@ export const WandererPageRenderer = {
                               `(${npc.personalityTraits.map(trait => NPC_PERSONALITY_TRAITS.find(t => t.id === trait)?.name || trait).join(', ')})` : '';
 
             li.innerHTML = `
-                <div class="glass-card p-3 rounded-lg flex justify-between items-center mb-2 cursor-pointer hover:bg-slate-700">
-                    <div>
-                        <h4 class="text-lg font-bold text-white">${npc.name}</h4>
-                        <p class="text-sm text-slate-400">Umur: ${Math.floor(npc.age)} (${lifeStageDef.stage}) | Kesehatan: ${healthStateDef.description}</p>
-                        <p class="text-sm text-slate-400">${npcRole} ${npcTraits}</p>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-sm text-indigo-400 font-semibold capitalize">${attitudeLevel.replace(/_/g, ' ')}</p>
-                        <p class="text-xs text-slate-500">Rep: ${dbInstance.wanderer.reputation[npc.id] || 0}</p>
-                    </div>
+            <div class="glass-card p-3 rounded-lg flex justify-between items-center mb-2 cursor-pointer hover:bg-slate-700">
+                <div>
+                    <h4 class="text-lg font-bold text-white">${npc.name}</h4>
+                    <p class="text-sm text-slate-400">Umur: ${Math.floor(npc.age)} (${lifeStageDef.stage}) | Kesehatan: ${healthStateDef.description}</p>
+                    <p class="text-sm text-slate-400">${npcRole} ${npcTraits}</p>
                 </div>
-            `;
+                <div class="text-right">
+                    <p class="text-sm text-indigo-400 font-semibold capitalize">${attitudeLevel.replace(/_/g, ' ')}</p>
+                    <p class="text-xs text-slate-500">Rep: ${getCurrentUser().reputation[npc.id] || 0}</p>
+                </div>
+            </div>
+        `;
             li.addEventListener('click', () => {
                 console.log(`Mengklik NPC: ${npc.name} (${npc.id})`);
                 triggerNpcDialogue(npc);
@@ -2138,6 +2146,7 @@ export const WandererPageRenderer = {
         }
     },
 
+     // ... (lanjutkan ke fungsi _addPersonalReflection) ...
     addToWandererChronicle: (entry) => {
         const currentUser = getCurrentUser();
         if (!currentUser.chronicle) {
@@ -2152,7 +2161,8 @@ export const WandererPageRenderer = {
         const container = document.getElementById('chronicle-container');
         if (!container) return;
 
-        const currentUserChronicle = getCurrentUser().chronicle;
+        const currentUserChronicle = getCurrentUser().chronicle; // Gunakan getCurrentUser()
+        // ... (sisa kode renderChronicle) ...
         if (!currentUserChronicle || currentUserChronicle.length === 0) {
             container.innerHTML = `<p class="text-center text-slate-500 italic">Kisah Anda belum terukir.</p>`;
             return;
@@ -2226,7 +2236,8 @@ export const WandererPageRenderer = {
         const container = document.getElementById('notification-log-container');
         if (!container) return;
 
-        const notificationLog = dbInstance.world.notificationLog || [];
+        const notificationLog = dbInstanceRef.world.notificationLog || []; // Gunakan dbInstanceRef
+        // ... (sisa kode renderNotificationLog) ...
         const sortedLog = [...notificationLog].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
 
@@ -2574,6 +2585,8 @@ export const WandererPageRenderer = {
         const container = document.getElementById('world-map-page');
         if (!container) return;
 
+        // ... (html template) ...
+
         // Ensure the base HTML for the world map and detail panel is always present when page is 'world_map'
         container.innerHTML = `
             <div id="world-map-svg-container" class="relative w-full h-[600px] bg-slate-900 rounded-lg overflow-hidden border border-border-color mb-8 flex-grow">
@@ -2667,6 +2680,12 @@ export const WandererPageRenderer = {
         `;
         
         worldMapSvgContainer = document.getElementById('world-map-svg');
+        /// ... (perbarui referensi elemen) ...
+
+        const regions = dbInstanceRef.world.regions || {}; // Gunakan dbInstanceRef
+        const mapSvg = worldMapSvgContainer;
+        mapSvg.innerHTML = ''; // Clear previous regions/markers
+
         regionDetailPanel = document.getElementById('region-detail-panel');
         poiDetailPanel = document.getElementById('poi-detail-panel');
         if (poiDetailPanel) {
@@ -2748,9 +2767,11 @@ export const WandererPageRenderer = {
         mapSvg.appendChild(defs);
 
 
+        // ... (loop regions) ...
         for (const regionId in regions) {
             const region = regions[regionId];
             const layout = regionLayout[regionId];
+            // ... (sisa kode renderWorldMap) ...
             if (!layout) {
                 console.warn(`Layout for region ${regionId} not defined in regionLayout.`);
                 continue;
@@ -2799,7 +2820,8 @@ export const WandererPageRenderer = {
         }
         
         // Render POI Markers
-        const worldLandmarks = dbInstance.world.landmarks || {};
+        const worldLandmarks = dbInstanceRef.world.landmarks || {}; // Gunakan dbInstanceRef
+        // ... (loop landmarks) ...
         for (const poiId in worldLandmarks) {
             const poi = worldLandmarks[poiId];
             const region = regions[poi.regionId];
@@ -2862,7 +2884,8 @@ export const WandererPageRenderer = {
 
     _showRegionDetailPanel(regionId, mouseX, mouseY) {
         if (!regionDetailPanel) return;
-        const region = dbInstance.world.regions[regionId];
+        const region = dbInstanceRef.world.regions[regionId]; // Gunakan dbInstanceRef
+        // ... (sisa kode _showRegionDetailPanel) ...
 
         if (!region) return;
 
@@ -2955,6 +2978,13 @@ export const WandererPageRenderer = {
 
     _showPoiDetailPanel: (poi, mouseX, mouseY) => {
         if (!poiDetailPanel) return;
+        // ... (sisa kode _showPoiDetailPanel) ...
+        // Gunakan dbInstanceRef di sini
+        document.getElementById('poi-detail-description').textContent = poi.description || dbInstanceRef.world.regions[poi.regionId]?.description || 'Tidak ada deskripsi.';
+
+        const journalEntryTemplate = JOURNAL_ENTRY_TEMPLATES[poi.journalEntryId];
+        const currentUserJournal = getCurrentUser().journal || []; // Gunakan getCurrentUser()
+        // ... (sisa kode _showPoiDetailPanel) ...
 
         poiDetailName.textContent = poi.name;
         poiDetailType.textContent = poi.type.replace(/_/g, ' ');
