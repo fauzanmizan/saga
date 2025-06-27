@@ -9,11 +9,11 @@
 
 import { UIManager } from '../uiManager.js';
 import { getCurrentUser, setCurrentUser } from '../authService.js';
-import { updateDocument } '../firebaseService.js';
+// PERBAIKI BARIS INI: Tambahkan 'from'
+import { updateDocument } from '../firebaseService.js'; 
 import { WorldManager } from '../worldManager.js';
 import { addToWandererChronicle } from '../chronicleManager.js';
-// PERBAIKI JALUR IMPOR INI:
-import { TRADABLE_ITEMS_DATA } from '../data/items.js'; // Mengubah dari ../data/core.js menjadi ../data/items.js
+import { TRADABLE_ITEMS_DATA } from '../data/items.js';
 
 let dbInstanceRef;
 let saveDBInstanceRef;
