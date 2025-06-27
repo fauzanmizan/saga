@@ -38,9 +38,9 @@
 // ===========================================
 
 import { UIManager } from '../../uiManager.js';
-import { getCurrentUser, logout } from '../../authService.js';
+import { getCurrentUser, AuthService as AuthServiceRef } from '../../authService.js'; // Mengimpor AuthService sebagai AuthServiceRef
 import { ForgerPageRenderer } from './forgerPageRenderer.js';
-import { WorldManager } from '../../worldManager.js'; // Ensure WorldManager is imported
+import { WorldManager } from '../../worldManager.js';
 import { NPC_PERSONALITY_TRAITS, NPC_HEALTH_STATES, NPC_LIFESTAGES, FACTION_TYPES, GLOBAL_ATTRIBUTES, SKILL_TREE_DATA, TRADABLE_ITEMS_DATA } from '../../gameData.js'; // Import all necessary gameData for dependencies
 
 let dbInstance;
@@ -77,11 +77,13 @@ export const ForgerFeatures = {
     // --- Inisialisasi Halaman Forger ---
     initForgerPage() {
         if (!getCurrentUser() || getCurrentUser().role !== 'forger') {
-            logout();
+            // UBAH PANGGILAN LOGOUT DI SINI
+            AuthServiceRef.logout(); // Panggil logout dari objek AuthServiceRef
             return;
         }
         document.getElementById('forger-app').style.display = 'flex';
-        document.getElementById('logout-button').onclick = () => logout();
+        // UBAH PANGGILAN LOGOUT DI SINI UNTUK TOMBOL LOGOUT JUGA
+        document.getElementById('logout-button').onclick = () => AuthServiceRef.logout(); // Panggil logout dari objek AuthServiceRef
 
         ForgerPageRenderer.renderForgerNav();
         ForgerPageRenderer.setupForgerNavEvents();
