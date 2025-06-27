@@ -258,7 +258,7 @@ body::before {
     width: 100%;
     height: 100%;
     /* Memperbaiki string base64 untuk gambar 3x3 pixel putih semi-transparan */
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKaggsAAAAFUlEQVQYV2NkgAFGMiMDzDQ0NAwABjwD/R4JqX0AAAAASUVORK5CYII=');
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII=');
     opacity: 0.05;
     pointer-events: none;
     z-index: -1;
@@ -1446,7 +1446,7 @@ main {
     /* Inherits glass-card styling */
     background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%), /* Dark base for cosmic feel */
                 radial-gradient(circle at 50% 50%, rgba(129, 140, 248, 0.1) 0%, transparent 80%), /* Subtle center glow */
-                url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKaggsAAAAFUlEQVQYV2NkgAFGMiMDzDQ0NAwABjwD/R4JqX0AAAAASUVORK5CYII=') repeat; /* Very subtle star/energy grid pattern */
+                url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII=') repeat; /* Very subtle star/energy grid pattern */
     background-size: cover, auto, 5px 5px;
     background-position: center, center, center;
     position: relative; /* Crucial for absolute positioning of markers */
@@ -1918,7 +1918,7 @@ main {
 #forger-page-container .glass-card.observatory-container {
     background: linear-gradient(160deg, rgba(15, 23, 42, 0.7) 0%, rgba(30, 41, 59, 0.8) 100%), /* Dark, cosmic gradient */
                 radial-gradient(circle at 50% 50%, rgba(129, 140, 248, 0.1) 0%, transparent 80%), /* Subtle center glow */
-                url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKaggsAAAAFUlEQVQYV2NkgAFGMiMDzDQ0NAwABjwD/R4JqX0AAAAASUVORK5CYII=') repeat; /* Very subtle star/energy grid pattern */
+                url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII=') repeat; /* Very subtle star/energy grid pattern */
     background-size: cover, auto, 5px 5px;
     background-position: center, center, center;
     border-color: rgba(129, 140, 248, 0.6); /* Brand color border */
