@@ -1,6 +1,13 @@
 // js/features/wanderer/wandererPageRenderer.js
 
 // == MODIFIED BY: Tim 3.A ==
+// == TANGGAL: 2025-06-27, 06:05 WITA ==
+// == PERIHAL: Perbaikan Akses Data dalam Template HTML ==
+// - Menghapus akses langsung ke dbInstance.world.regions, WORLD_LANDMARKS, dan data dinamis lainnya
+//   dari string HTML literal di definePageTemplates() untuk halaman 'world_map'.
+// - Data ini sekarang akan di-render sepenuhnya secara dinamis oleh renderWorldMap().
+// ===========================================
+// == MODIFIED BY: Tim 3.A ==
 // == TANGGAL: 2025-06-27, 05:40 WITA ==
 // == PERIHAL: Perbaikan Scope dbInstance dan Referensi Data Global ==
 // - Menghapus deklarasi 'let dbInstance;' yang berlebihan di awal modul.
@@ -1635,10 +1642,6 @@ export const WandererPageRenderer = {
     },
 
     definePageTemplates() {
-        // The main structure is in wanderer.html now.
-        // This object just defines the inner content for each specific page's main area.
-        // We'll primarily use getWandererCharacterHtml() for the character page.
-        // Other pages are dynamically generated in their respective render functions.
         WandererPageRenderer.pageTemplates = {
             character: WandererPageRenderer.getWandererCharacterHtml(),
             inventory: `
@@ -1650,9 +1653,9 @@ export const WandererPageRenderer = {
                         <span class="text-slate-400 text-sm">Urutkan Berdasarkan:</span>
                         <select id="sort-inventory-by" class="glass-input p-2 rounded text-sm w-full md:w-auto">
                             <option value="name">Nama</option>
-                            <option value="type">Tipe</option>
-                            <option value="value">Nilai</option>
                             <option value="quantity">Kuantitas</option>
+                            <option value="value">Nilai</option>
+                            <option value="type">Tipe</option>
                             <option value="rarity">Kelangkaan</option>
                         </select>
                         <span class="text-slate-400 text-sm">Filter Tipe:</span>
@@ -1670,22 +1673,20 @@ export const WandererPageRenderer = {
                         </select>
                     </div>
 
-                    <div id="inventory-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 overflow-y-auto flex-grow pr-2 scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-slate-800">
+                    <div id="inventory-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                     </div>
 
-                    <div id="item-detail-panel" class="glass-card p-4 rounded-lg shadow-xl border border-border-color absolute bottom-4 right-4 w-72 md:w-80 z-10" style="display: none;">
-                        <h4 id="detail-item-name" class="text-xl font-serif text-white mb-2"></h4>
-                        <p class="text-slate-400 text-sm mb-1">Tipe: <span id="detail-item-type" class="capitalize text-white"></span></p>
-                        <p class="text-slate-400 text-sm mb-2">Kelangkaan: <span id="detail-item-rarity" class="capitalize text-white"></span></p>
-                        <p id="detail-item-description" class="text-slate-300 text-sm mb-2"></p>
-                        <p id="detail-item-value" class="text-slate-500 text-xs"></p>
-                        <p id="detail-item-durability" class="text-slate-500 text-xs mt-1" style="display: none;"></p>
-                        <p id="detail-item-effects" class="text-slate-500 text-xs mt-1" style="display: none;"></p>
-                        <div class="flex flex-wrap justify-end space-x-2 mt-4" id="item-action-buttons">
+                    <div id="item-detail-panel" class="glass-card p-4 rounded-lg shadow-xl border border-border-color fixed inset-x-0 bottom-0 mx-auto w-11/12 md:w-2/3 lg:w-1/2 z-50 transform translate-y-full transition-transform duration-300" style="display: none;">
+                        <button id="close-detail-panel" class="absolute top-3 right-3 text-slate-400 hover:text-white"><i data-feather="x" class="w-6 h-6"></i></button>
+                        <h4 id="detail-item-name" class="text-2xl font-serif text-white mb-2">Nama Item</h4>
+                        <p class="text-slate-400 text-sm mb-1">Tipe: <span id="detail-item-type" class="font-bold capitalize"></span></p>
+                        <p class="text-slate-400 text-sm mb-1">Kelangkaan: <span id="detail-item-rarity" class="font-bold capitalize"></span></p>
+                        <p id="detail-item-value" class="text-slate-300 text-base mb-2">Nilai: X Koin</p>
+                        <p id="detail-item-durability" class="text-slate-300 text-base mb-2" style="display: none;"></p>
+                        <p id="detail-item-effects" class="text-slate-300 text-base mb-4" style="display: none;"></p>
+                        <p id="detail-item-description" class="text-slate-200 text-sm italic mb-4"></p>
+                        <div id="item-action-buttons" class="flex flex-wrap gap-2 justify-end">
                         </div>
-                        <button id="close-detail-panel" class="absolute top-2 right-2 text-slate-400 hover:text-white transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-                        </button>
                     </div>
                 </div>
             `,
@@ -1734,7 +1735,7 @@ export const WandererPageRenderer = {
                 </div>
             `,
             quest_log: `
-                 <div id="quest-log-page" class="h-full flex flex-col">
+                <div id="quest-log-page" class="h-full flex flex-col">
                     <div class="border-b border-border-color mb-8">
                         <nav class="flex space-x-8" aria-label="Tabs" id="quest-log-tabs">
                             <button class="quest-tab active glass-button py-4 px-1 text-lg font-semibold border-b-2 border-transparent" data-target="active_quests_content">Misi Aktif</button>
@@ -1829,9 +1830,50 @@ export const WandererPageRenderer = {
                 <div id="world-map-page" class="h-full flex flex-col">
                     <div id="world-map-svg-container" class="relative w-full h-[600px] bg-slate-900 rounded-lg overflow-hidden border border-border-color mb-8 flex-grow">
                         <svg id="world-map-svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" class="w-full h-full">
-                            <!-- Regions will be drawn here -->
-                            <!-- POIs will be drawn here -->
-                        </svg>
+                            <defs>
+                                <pattern id="plains-pattern" patternUnits="userSpaceOnUse" width="10" height="10">
+                                    <rect x="0" y="0" width="10" height="10" fill="#4CAF50"/>
+                                    <circle cx="5" cy="5" r="2" fill="#8BC34A"/>
+                                </pattern>
+                                <pattern id="forest-pattern" patternUnits="userSpaceOnUse" width="10" height="10">
+                                    <rect x="0" y="0" width="10" height="10" fill="#2E7D32"/>
+                                    <circle cx="5" cy="5" r="3" fill="#4CAF50"/>
+                                </pattern>
+                                <pattern id="desert-pattern" patternUnits="userSpaceOnUse" width="10" height="10">
+                                    <rect x="0" y="0" width="10" height="10" fill="#FFEB3B"/>
+                                    <path d="M0 5 L5 0 L10 5 L5 10 Z" fill="#FFC107"/>
+                                </pattern>
+                                <pattern id="mountainous-pattern" patternUnits="userSpaceOnUse" width="10" height="10">
+                                    <rect x="0" y="0" width="10" height="10" fill="#607D8B"/>
+                                    <path d="M0 10 L5 0 L10 10 Z" fill="#90A4AE"/>
+                                </pattern>
+                                <pattern id="swamp-pattern" patternUnits="userSpaceOnUse" width="10" height="10">
+                                    <rect x="0" y="0" width="10" height="10" fill="#5D4037"/>
+                                    <circle cx="2" cy="8" r="1" fill="#4CAF50"/>
+                                    <circle cx="8" cy="2" r="1" fill="#795548"/>
+                                </pattern>
+                                <pattern id="oceanic-pattern" patternUnits="userSpaceOnUse" width="10" height="10">
+                                    <rect x="0" y="0" width="10" height="10" fill="#2196F3"/>
+                                    <path d="M0 5 Q5 0 10 5 Q5 10 0 5 Z" fill="#00BCD4"/>
+                                </pattern>
+                                <pattern id="floating_islands-pattern" patternUnits="userSpaceOnUse" width="10" height="10">
+                                    <rect x="0" y="0" width="10" height="10" fill="#BBDEFB"/>
+                                    <circle cx="5" cy="5" r="3" fill="#64B5F6"/>
+                                </pattern>
+                                <pattern id="volcanic-pattern" patternUnits="userSpaceOnUse" width="10" height="10">
+                                    <rect x="0" y="0" width="10" height="10" fill="#3E2723"/>
+                                    <circle cx="5" cy="5" r="2" fill="#FF5722"/>
+                                </pattern>
+                                <pattern id="tundra-pattern" patternUnits="userSpaceOnUse" width="10" height="10">
+                                    <rect x="0" y="0" width="10" height="10" fill="#B0BEC5"/>
+                                    <rect x="2" y="2" width="6" height="6" fill="#CFD8DC"/>
+                                </pattern>
+                                <pattern id="jungle-pattern" patternUnits="userSpaceOnUse" width="10" height="10">
+                                    <rect x="0" y="0" width="10" height="10" fill="#388E3C"/>
+                                    <path d="M0 10 L5 0 L10 10 Z" fill="#66BB6A"/>
+                                </pattern>
+                            </defs>
+                            </svg>
                         <div class="absolute top-4 left-4 flex space-x-2 z-10">
                             <button id="map-zoom-in" class="glass-button p-2 rounded-full"><i data-feather="plus" class="w-5 h-5 text-slate-300"></i></button>
                             <button id="map-zoom-out" class="glass-button p-2 rounded-full"><i data-feather="minus" class="w-5 h-5 text-slate-300"></i></button>
@@ -1845,7 +1887,7 @@ export const WandererPageRenderer = {
                         <p class="text-slate-400 text-sm mb-1">Ancaman: <span id="detail-region-threat" class="font-bold"></span></p>
                         <p class="text-slate-400 text-sm mb-4">Faksi Dominan: <span id="detail-region-faction" class="font-bold"></span></p>
                         <p class="text-slate-400 text-sm mb-4">Deskripsi: <span id="detail-region-description" class="text-slate-300 italic"></span></p>
-                        
+
                         <h5 class="text-lg font-bold text-white mb-2">Status Nexus</h5>
                         <p class="text-slate-400 text-sm mb-1">Status: <span id="detail-nexus-status" class="font-bold capitalize"></span></p>
                         <p class="text-slate-300 text-sm">Intention: <span id="detail-intention-value" class="font-mono"></span></p>
@@ -1868,7 +1910,7 @@ export const WandererPageRenderer = {
                         <p id="poi-detail-journal-entry" class="text-slate-300 text-sm italic mb-4" style="display: none;"></p>
                         <p id="poi-detail-description" class="text-slate-200 text-sm mb-2"></p>
                     </div>
-                    
+
                     <div id="npc-list-container" class="glass-card p-8 rounded-2xl shadow-lg border border-border-color mt-8">
                     </div>
                 </div>
@@ -1943,7 +1985,7 @@ export const WandererPageRenderer = {
             } else if (pageId === 'world_map') {
                 document.getElementById('map-zoom-in')?.addEventListener('click', () => WandererPageRenderer._handleMapZoom(0.1));
                 document.getElementById('map-zoom-out')?.addEventListener('click', () => WandererPageRenderer._handleMapZoom(-0.1));
-                
+
                 const detailPanel = document.getElementById('region-detail-panel');
                 if (detailPanel) {
                     document.addEventListener('click', (e) => {
