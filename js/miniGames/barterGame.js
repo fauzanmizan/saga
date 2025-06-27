@@ -1,4 +1,4 @@
-// js/miniGames/barterGame.js
+// js/miniGames/barterGame.js (MODIFIED)
 
 // == NEW FILE: BarterGame ==
 // == TANGGAL: 2025-06-27, 18:45 WITA ==
@@ -9,10 +9,11 @@
 
 import { UIManager } from '../uiManager.js';
 import { getCurrentUser, setCurrentUser } from '../authService.js';
-import { updateDocument } from '../firebaseService.js';
+import { updateDocument } '../firebaseService.js';
 import { WorldManager } from '../worldManager.js';
 import { addToWandererChronicle } from '../chronicleManager.js';
-import { TRADABLE_ITEMS_DATA } from '../data/core.js'; // Assuming TRADABLE_ITEMS_DATA is needed for bartering
+// PERBAIKI JALUR IMPOR INI:
+import { TRADABLE_ITEMS_DATA } from '../data/items.js'; // Mengubah dari ../data/core.js menjadi ../data/items.js
 
 let dbInstanceRef;
 let saveDBInstanceRef;
@@ -42,15 +43,13 @@ export const BarterGame = {
 
         UIManagerRef.showLoading(`Memulai perdagangan dengan ${targetNpc.name}...`);
 
-        // Placeholder for actual Barter game logic (e.g., UI for selecting items to trade)
         console.log(`Starting Barter mini-game with ${targetNpc.name}.`);
 
-        // Simulate game outcome based on player's Social and Wit attributes
         const user = getCurrentUser();
         const userSocial = user.attributes.find(attr => attr.name === 'Social')?.value || 1;
         const userWit = user.attributes.find(attr => attr.name === 'Wit')?.value || 1;
 
-        const successChance = (userSocial + userWit) / 20; // Example calculation
+        const successChance = (userSocial + userWit) / 20;
         const success = Math.random() < successChance;
 
         setTimeout(async () => {
@@ -63,8 +62,7 @@ export const BarterGame = {
                 user.xp += xpGain;
                 user.essenceOfWill += essenceGain;
 
-                // Example: NPC gives a random item, player gives nothing (simplified)
-                const itemsToGive = ['rare_material', 'simple_tool']; // Example item IDs
+                const itemsToGive = ['rare_material', 'simple_tool'];
                 const randomItemToGainId = itemsToGive[Math.floor(Math.random() * itemsToGive.length)];
                 const itemQuantity = 1;
                 const itemDefinition = TRADABLE_ITEMS_DATA[randomItemToGainId];
@@ -106,10 +104,10 @@ export const BarterGame = {
                 });
             }
             if (WandererPageRendererRef && WandererPageRendererRef.renderPlayerStatus) {
-                WandererPageRendererRef.renderPlayerStatus(); // Re-render player status after changes
-                WandererPageRendererRef.renderInventoryPage(); // Re-render inventory
-                WandererPageRendererRef.renderNpcList(user.currentRegion); // Re-render NPC list to show reputation change
+                WandererPageRendererRef.renderPlayerStatus();
+                WandererPageRendererRef.renderInventoryPage();
+                WandererPageRendererRef.renderNpcList(user.currentRegion);
             }
-        }, 2000); // Simulate game duration
+        }, 2000);
     }
 };
