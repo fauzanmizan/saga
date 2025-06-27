@@ -182,8 +182,8 @@ import { InspireGame } from '../../miniGames/inspireGame.js'; // Added import fo
 import { BarterGame } from '../../miniGames/barterGame.js'; // Added import for BarterGame
 import { CommissionGame } from '../../miniGames/commissionGame.js'; // Added import for CommissionGame
 import { EmpathizeGame } from '../../miniGames/empathizeGame.js'; // Added import for EmpathizeGame
-import { initializeNpcInteraction, triggerNpcDialogue } from '../../npcInteraction.js'; // Added import for npcInteraction and triggerNpcDialogue
-import { initializeQuestManager, checkQuestCompletion } from '../../questManager.js'; // Added import for questManager and checkQuestCompletion
+import { initializeNpcInteraction, triggerNpcDialogue } from '../../features/wanderer/npcInteraction.js'; // Added import for npcInteraction and triggerNpcDialogue
+import { initializeQuestManager, checkQuestCompletion } from '../../features/wanderer/questManager.js'; // Added import for questManager and checkQuestCompletion
 import { addToWandererChronicle } from '../../chronicleManager.js'; // Added import for chronicleManager
 
 // HAPUS BARIS INI:
