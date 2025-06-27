@@ -150,7 +150,8 @@
 // ===========================================
 
 import { UIManager } from '../../uiManager.js';
-import { getCurrentUser, setCurrentUser, logout } from '../../authService.js';
+// Sesudah:
+import { getCurrentUser, setCurrentUser, AuthService as AuthServiceRef } from '../../authService.js'; // Impor AuthService sebagai AuthServiceRef (hindari konflik nama)
 import { updateDocument } from '../../firebaseService.js';
 import { WorldManager } from '../../worldManager.js';
 import { SKILL_TREE_DATA, GLOBAL_ATTRIBUTES, BIRTH_QUESTIONS, INTERROGATION_DATA, NPC_REPUTATION_LEVELS, NPC_HEALTH_STATES, NPC_LIFESTAGES, TRADABLE_ITEMS_DATA, COSMIC_CYCLES, WORLD_LANDMARKS, REGIONS_DATA, NPC_ROLES, NPC_PERSONALITY_TRAITS, JOURNAL_ENTRY_TEMPLATES } from '../../gameData.js'; // Import data baru
