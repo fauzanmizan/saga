@@ -154,7 +154,11 @@ import { getCurrentUser, setCurrentUser, logout } from '../../authService.js';
 import { updateDocument } from '../../firebaseService.js';
 import { WorldManager } from '../../worldManager.js';
 import { SKILL_TREE_DATA, GLOBAL_ATTRIBUTES, BIRTH_QUESTIONS, INTERROGATION_DATA, NPC_REPUTATION_LEVELS, NPC_HEALTH_STATES, NPC_LIFESTAGES, TRADABLE_ITEMS_DATA, COSMIC_CYCLES, WORLD_LANDMARKS, REGIONS_DATA, NPC_ROLES, NPC_PERSONALITY_TRAITS, JOURNAL_ENTRY_TEMPLATES } from '../../gameData.js'; // Import data baru
-import { InterrogateGame, ChallengeGame, InspireGame, BarterGame, CommissionGame, AbsorbEchoGame, EmpathizeGame } from '../../features/wanderer/wandererGameLogic.js';
+// UBAH BARIS INI:
+// Sebelum: import { InterrogateGame, ChallengeGame, InspireGame, BarterGame, CommissionGame, AbsorbEchoGame, EmpathizeGame } from '../../features/wanderer/wandererGameLogic.js';
+// Sesudah:
+import * as WandererGameLogic from '../../features/wanderer/wandererGameLogic.js'; // Impor semua sebagai satu objek
+// Import modul interaksi NPC dan Quest Manager
 import { initializeNpcInteraction, triggerNpcDialogue } from '../../features/wanderer/npcInteraction.js';
 import { initializeQuestManager, checkQuestCompletion } from './questManager.js';
 import { gameTime } from '../../features/utils.js';
@@ -313,45 +317,45 @@ export const WandererPageRenderer = {
                     switch (pageId) {
                         case 'interrogate_action':
                             if (targetNpc) {
-                                await InterrogateGame.triggerInterrogateMiniGame(targetNpc);
+                                await WandererGameLogic.InterrogateGame.triggerInterrogateMiniGame(targetNpc);
                             } else {
                                 UIManagerRef.showNotification("Tidak ada NPC untuk diinterogasi di wilayah ini.", 'info', 'bg-blue-500');
                             }
                             return;
                         case 'absorb_echo_action':
-                            await AbsorbEchoGame.triggerAbsorbEchoMiniGame('some_dummy_source');
+                            await WandererGameLogic.AbsorbEchoGame.triggerAbsorbEchoMiniGame('some_dummy_source');
                             return;
                         case 'challenge_action':
                             if (targetNpc) {
-                                await ChallengeGame.triggerChallengeMiniGame(targetNpc);
+                                await WandererGameLogic.ChallengeGame.triggerChallengeMiniGame(targetNpc);
                             } else {
                                 UIManagerRef.showNotification("Tidak ada lawan untuk ditantang di wilayah ini.", 'info', 'bg-blue-500');
                             }
                             return;
                         case 'empathize_action':
                              if (targetNpc) {
-                                await EmpathizeGame.triggerEmpathizeMiniGame(targetNpc);
+                                await WandererGameLogic.EmpathizeGame.triggerEmpathizeMiniGame(targetNpc);
                             } else {
                                 UIManagerRef.showNotification("Tidak ada jiwa untuk dirasakan di wilayah ini.", 'info', 'bg-blue-500');
                             }
                             return;
                         case 'inspire_action':
                             if (targetNpc) {
-                                await InspireGame.triggerInspireMiniGame(targetNpc);
+                                await WandererGameLogic.InspireGame.triggerInspireMiniGame(targetNpc);
                             } else {
                                 UIManagerRef.showNotification("Tidak ada jiwa untuk diinspirasi di wilayah ini.", 'info', 'bg-blue-500');
                             }
                             return;
                         case 'barter_action':
                             if (targetNpc) {
-                                await BarterGame.triggerBarterMiniGame(targetNpc);
+                                await WandererGameLogic.BarterGame.triggerBarterMiniGame(targetNpc);
                             } else {
                                 UIManagerRef.showNotification("Tidak ada jiwa untuk diajak bertukar di wilayah ini.", 'info', 'bg-blue-500');
                             }
                             return;
                         case 'commission_action':
                             if (targetNpc) {
-                                await CommissionGame.triggerCommissionMiniGame(targetNpc);
+                                await WandererGameLogic.CommissionGame.triggerCommissionMiniGame(targetNpc);
                             } else {
                                 UIManagerRef.showNotification("Tidak ada NPC pengrajin yang tersedia di wilayah ini.", 'info', 'bg-blue-500');
                             }
