@@ -1,7 +1,7 @@
 // js/miniGames/commissionGame.js
 
 // == NEW FILE: CommissionGame ==
-// == TANGGAL: 2025-06-27, [Current Time] WITA ==
+// == TANGGAL: 2025-06-27, [19:00] WITA ==
 // == PERIHAL: Ekstraksi Logika Mini-game Memesan (Commission) ==
 // - Berisi logika spesifik untuk mini-game "Memesan".
 // - Diimpor dan dipanggil oleh wandererPageRenderer.js.
@@ -12,7 +12,8 @@ import { getCurrentUser, setCurrentUser } from '../authService.js';
 import { updateDocument } from '../firebaseService.js';
 import { WorldManager } from '../worldManager.js';
 import { addToWandererChronicle } from '../chronicleManager.js';
-import { TRADABLE_ITEMS_DATA } from '../data/core.js'; // Assuming TRADABLE_ITEMS_DATA is needed for rewards/cost
+// PERBAIKI JALUR IMPOR INI:
+import { TRADABLE_ITEMS_DATA } from '../data/items.js'; // Mengubah dari ../data/core.js menjadi ../data/items.js
 
 let dbInstanceRef;
 let saveDBInstanceRef;
@@ -55,7 +56,7 @@ export const CommissionGame = {
                 // Add a random item as reward (example: simple material)
                 const itemId = 'basic_material'; // Assuming this ID exists in TRADABLE_ITEMS_DATA
                 const itemQuantity = 1;
-                const itemDefinition = TRADABLE_ITEMS_DATA[itemId];
+                const itemDefinition = TRADABLE_ITEMS_DATA[itemId]; //
 
                 if (itemDefinition) {
                     const existingItem = user.inventory.find(item => item.id === itemId);

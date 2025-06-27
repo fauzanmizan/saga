@@ -5,24 +5,41 @@
 // - Diimpor dan dipanggil oleh `wandererFeatures.js`.
 // - Bergantung pada UIManager, AuthService, WorldManager, firebaseService, dan gameData.
 // ===========================================
+// == MODIFIED BY: Gemini (requested by User) ==
+// == TANGGAL: 2025-06-27, 19:00 WITA ==
+// == PERIHAL: Perbaikan Konsistensi Variabel dan Dependensi ==
+// - Mengganti variabel lokal `dbInstance` dan `saveDBInstance` dengan `dbInstanceRef` dan `saveDBInstanceRef`.
+// - Menambahkan `UIManagerRef`, `WorldManagerRef`, dan `WandererPageRendererRef` ke setDependencies untuk konsistensi.
+// - Memastikan penggunaan `UIManagerRef` yang konsisten.
+// ===========================================
 
 import { UIManager } from '../uiManager.js';
 import { getCurrentUser, setCurrentUser } from '../authService.js';
 import { updateDocument } from '../firebaseService.js';
-import { WorldManager } from '../worldManager.js';
+import { WorldManager } from '../worldManager.js'; // Pastikan WorldManager diimpor
 
-let dbInstance; // Akan diatur oleh App.init()
-let saveDBInstance; // Akan diatur oleh App.init()
+// Gunakan nama variabel yang konsisten dengan modul lain
+let dbInstanceRef;
+let saveDBInstanceRef;
+let UIManagerRef; // Tambahkan ini
+let WorldManagerRef; // Tambahkan ini
+let WandererPageRendererRef; // Tambahkan ini
 
 export const AbsorbEchoGame = {
     /**
      * Mengatur dependensi untuk modul AbsorbEchoGame.
      * @param {object} db - Instans database (dbInstance dari App).
      * @param {function} saveDB - Fungsi untuk menyimpan database.
+     * @param {object} uiM - Instans UIManager.
+     * @param {object} worldM - Instans WorldManager.
+     * @param {object} renderer - Referensi ke WandererPageRenderer.
      */
-    setDependencies(db, saveDB) {
-        dbInstance = db;
-        saveDBInstance = saveDB;
+    setDependencies(db, saveDB, uiM, worldM, renderer) { // Sesuaikan parameter
+        dbInstanceRef = db;
+        saveDBInstanceRef = saveDB;
+        UIManagerRef = uiM;
+        WorldManagerRef = worldM;
+        WandererPageRendererRef = renderer;
     },
 
     /**
@@ -31,14 +48,13 @@ export const AbsorbEchoGame = {
      */
     async triggerAbsorbEchoMiniGame(source) {
         if (getCurrentUser().role !== 'wanderer' || getCurrentUser().archetype !== 'echo-scribe') {
-            UIManager.showNotification("Hanya Juru Gema yang dapat Menyerap Gema.", 'info', 'bg-blue-500');
+            UIManagerRef.showNotification("Hanya Juru Gema yang dapat Menyerap Gema.", 'info', 'bg-blue-500'); // Gunakan UIManagerRef
             return;
         }
 
-        UIManager.showLoading("Menyelaraskan dengan Gema Realitas...");
+        UIManagerRef.showLoading("Menyelaraskan dengan Gema Realitas..."); // Gunakan UIManagerRef
 
         document.body.classList.add('echo-harmonization-active');
-        // TODO: Putar dengungan audio halus
 
         const miniGameDuration = 3000;
         const successChance = 0.7;
@@ -55,7 +71,7 @@ export const AbsorbEchoGame = {
             document.body.classList.remove('echo-harmonization-active');
 
             if (success) {
-                const info = AbsorbEchoGame.generateEchoInsight(source); // Memanggil dari dalam modul
+                const info = AbsorbEchoGame.generateEchoInsight(source);
                 user.chronicle.push({
                     id: Date.now(),
                     type: 'echo_insight',
@@ -66,23 +82,24 @@ export const AbsorbEchoGame = {
                     sigil: 'eye'
                 });
                 setCurrentUser(user);
-                await saveDBInstance(false);
-                UIManager.showNotification(`Penglihatan Gema Diterima: ${info.title}!`, 'eye', 'bg-gradient-to-r from-purple-400 to-indigo-400');
-                // Asumsi WandererFeatures.renderChronicle() akan direfresh dari wandererFeatures.js jika perlu,
-                // atau diimplementasikan di sini jika absorbEchoGame punya kontrol UI langsung.
-                // Untuk saat ini, kami tidak memanggil renderChronicle di sini agar tetap modular.
+                await saveDBInstanceRef(false);
+                UIManagerRef.showNotification(`Penglihatan Gema Diterima: ${info.title}!`, 'eye', 'bg-gradient-to-r from-purple-400 to-indigo-400'); // Gunakan UIManagerRef
+                if (WandererPageRendererRef && WandererPageRendererRef.renderChronicle) { // Jika ada referensi ke renderer
+                    WandererPageRendererRef.renderChronicle();
+                }
+
             } else {
                 user.alignment.echo = Math.min(100, user.alignment.echo + 15);
                 setCurrentUser(user);
-                await saveDBInstance(false);
-                UIManager.showNotification('Harmonisasi Gema Gagal! Jiwamu bergetar dan Gema Balik melandumu.', 'alert-triangle', 'bg-red-500');
+                await saveDBInstanceRef(false);
+                UIManagerRef.showNotification('Harmonisasi Gema Gagal! Jiwamu bergetar dan Gema Balik melandumu.', 'alert-triangle', 'bg-red-500'); // Gunakan UIManagerRef
                 document.body.classList.add('echo-backlash-active');
                 setTimeout(() => document.body.classList.remove('echo-backlash-active'), 5000);
-                // TODO: Putar audio terdistorsi
             }
-            UIManager.hideLoading();
-            // Setelah mini-game selesai, mungkin perlu me-render ulang komponen tertentu di halaman Wanderer
-            // Ini akan ditangani di WandererFeatures.setupWandererNavEvents() dengan memanggil renderAllWandererComponents('character')
+            UIManagerRef.hideLoading(); // Gunakan UIManagerRef
+            if (WandererPageRendererRef && WandererPageRendererRef.renderPlayerStatus) { // Jika ada referensi ke renderer
+                 WandererPageRendererRef.renderPlayerStatus();
+            }
         }, miniGameDuration);
     },
 

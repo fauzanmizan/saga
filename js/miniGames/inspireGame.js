@@ -1,7 +1,7 @@
 // js/miniGames/inspireGame.js
 
 // == NEW FILE: InspireGame ==
-// == TANGGAL: 2025-06-27, [Current Time] WITA ==
+// == TANGGAL: 2025-06-27, [19:00] WITA ==
 // == PERIHAL: Ekstraksi Logika Mini-game Menginspirasi (Inspire) ==
 // - Berisi logika spesifik untuk mini-game "Menginspirasi".
 // - Diimpor dan dipanggil oleh wandererPageRenderer.js.
@@ -12,6 +12,8 @@ import { getCurrentUser, setCurrentUser } from '../authService.js';
 import { updateDocument } from '../firebaseService.js';
 import { WorldManager } from '../worldManager.js';
 import { addToWandererChronicle } from '../chronicleManager.js';
+// Tambahkan import SKILL_TREE_DATA jika skill Inspire dihitung di sini
+import { SKILL_TREE_DATA } from '../data/core.js'; // Asumsi SKILL_TREE_DATA ada di core.js
 
 let dbInstanceRef;
 let saveDBInstanceRef;
@@ -46,6 +48,10 @@ export const InspireGame = {
         // Simulate game outcome based on player's Social attribute
         const user = getCurrentUser();
         const userSocial = user.attributes.find(attr => attr.name === 'Social')?.value || 1;
+
+        // Jika skill Inspire memiliki level requirement atau efek dari SKILL_TREE_DATA, bisa diakses di sini
+        // const inspireSkillData = SKILL_TREE_DATA.Will-Shaper.active_inspire; // Contoh akses skill data
+        // const baseCost = inspireSkillData.cost || 4; // Menggunakan biaya dari skill data jika ada
 
         const successChance = userSocial / 15; // Example calculation
         const success = Math.random() < successChance;

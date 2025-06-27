@@ -5,27 +5,45 @@
 // - Menyediakan fungsi utama `triggerInterrogateMiniGame` dan fungsi-fungsi pembantu internalnya.
 // - Bergantung pada UIManager, getCurrentUser, updateDocument, firebaseService, dan gameData.
 // ===========================================
+// == MODIFIED BY: Gemini (requested by User) ==
+// == TANGGAL: 2025-06-27, 19:00 WITA ==
+// == PERIHAL: Perbaikan Jalur Impor dan Konsistensi Variabel ==
+// - Memperbarui jalur impor untuk SKILL_TREE_DATA, GLOBAL_ATTRIBUTES, INTERROGATION_DATA dari core.js.
+// - Mengganti variabel lokal `dbInstance`, `saveDBInstance`, `DB_DOC_ID_Instance` dengan `dbInstanceRef`, `saveDBInstanceRef` yang sudah digunakan secara global di modul lain.
+// - Menambahkan `UIManagerRef` dan `WandererPageRendererRef` ke setDependencies untuk konsistensi.
+// ===========================================
 
 import { UIManager } from '../uiManager.js';
 import { getCurrentUser, setCurrentUser } from '../authService.js';
 import { updateDocument } from '../firebaseService.js';
-import { SKILL_TREE_DATA, GLOBAL_ATTRIBUTES, INTERROGATION_DATA } from '../gameData.js';
+// PERBAIKI JALUR IMPOR INI:
+import { SKILL_TREE_DATA, GLOBAL_ATTRIBUTES, INTERROGATION_DATA } from '../data/core.js'; //
 
-let dbInstance; // Akan diatur oleh App.init() di main.js
-let saveDBInstance; // Akan diatur oleh App.init() di main.js
-let DB_DOC_ID_Instance; // Akan diatur oleh App.init() di main.js
+// Gunakan nama variabel yang konsisten dengan modul lain
+let dbInstanceRef;
+let saveDBInstanceRef;
+let UIManagerRef; // Tambahkan ini
+let WorldManagerRef; // Tambahkan ini jika dibutuhkan, dari App.js
+let WandererPageRendererRef; // Tambahkan ini
 
 export const InterrogateGame = {
     /**
      * Mengatur dependensi untuk modul InterrogateGame.
      * @param {object} db - Instans database (dbInstance dari App).
-     * @param {string} DB_DOC_ID - ID dokumen database utama.
+     * @param {string} DB_DOC_ID - ID dokumen database utama (tidak lagi digunakan secara langsung di sini, diasumsikan dikelola di App.js).
      * @param {function} saveDB - Fungsi untuk menyimpan database.
+     * @param {object} uiM - Instans UIManager.
+     * @param {object} worldM - Instans WorldManager.
+     * @param {object} renderer - Referensi ke WandererPageRenderer.
      */
-    setDependencies(db, DB_DOC_ID, saveDB) {
-        dbInstance = db;
-        DB_DOC_ID_Instance = DB_DOC_ID;
-        saveDBInstance = saveDB;
+    setDependencies(db, DB_DOC_ID, saveDB, uiM, worldM, renderer) { // Sesuaikan parameter
+        dbInstanceRef = db;
+        // DB_DOC_ID_Instance tidak lagi dibutuhkan sebagai variabel terpisah di sini,
+        // karena updateDocument tidak memanfaatkannya secara langsung di dalam mini-game ini.
+        saveDBInstanceRef = saveDB;
+        UIManagerRef = uiM;
+        WorldManagerRef = worldM;
+        WandererPageRendererRef = renderer;
     },
 
     /**
@@ -33,53 +51,42 @@ export const InterrogateGame = {
      * @param {object} npcTarget - Objek NPC yang akan diinterogasi (bisa juga string dummy).
      */
     async triggerInterrogateMiniGame(npcTarget) {
-        // Memastikan modal yang benar ditargetkan
         const interrogateModal = document.getElementById('interrogate-modal');
         if (!interrogateModal) {
             console.error("Interrogate modal HTML not found.");
-            UIManager.showNotification("Kesalahan sistem: Modal interogasi tidak ditemukan.", 'x-circle', 'bg-red-500');
+            UIManagerRef.showNotification("Kesalahan sistem: Modal interogasi tidak ditemukan.", 'x-circle', 'bg-red-500'); // Gunakan UIManagerRef
             return;
         }
 
         if (getCurrentUser().role !== 'wanderer' || getCurrentUser().archetype !== 'inquisitor') {
-            UIManager.showNotification("Hanya Sang Inkuisitor yang dapat Menginterogasi.", 'info', 'bg-blue-500');
+            UIManagerRef.showNotification("Hanya Sang Inkuisitor yang dapat Menginterogasi.", 'info', 'bg-blue-500'); // Gunakan UIManagerRef
             return;
         }
 
-        // Menentukan target interogasi dan kelemahan rahasianya
         const target = {
-            name: typeof npcTarget === 'string' ? npcTarget : npcTarget.name, // Handle dummy string or actual NPC object
-            // Menghasilkan 2-3 kelemahan acak untuk target dari daftar yang tersedia
+            name: typeof npcTarget === 'string' ? npcTarget : npcTarget.name,
             secretWeaknesses: ['fear', 'denial', 'ignorance', 'arrogance', 'guilt', 'pride'].sort(() => 0.5 - Math.random()).slice(0, Math.floor(Math.random() * 2) + 2)
         };
-        // Inisialisasi rune barikade mental berdasarkan kelemahan target
         let currentBarricadeRunes = target.secretWeaknesses.map(weaknessId => {
-            const runeData = INTERROGATION_DATA.runes.find(r => r.weaknesses.includes(weaknessId)) || { id: `default_${weaknessId}`, name: weaknessId.charAt(0).toUpperCase() + weaknessId.slice(1), icon: 'circle', weaknesses: [weaknessId] };
+            const runeData = INTERROGATION_DATA.runes.find(r => r.weaknesses.includes(weaknessId)) || { id: `default_${weaknessId}`, name: weaknessId.charAt(0).toUpperCase() + weaknessId.slice(1), icon: 'circle', weaknesses: [weaknessId] }; //
             return { ...runeData, isBroken: false };
         });
-        let currentComposure = INTERROGATION_DATA.playerComposureMax; // Komposur awal pemain
-        const playerComposureMax = INTERROGATION_DATA.playerComposureMax; // Komposur maksimum
+        let currentComposure = INTERROGATION_DATA.playerComposureMax; //
+        const playerComposureMax = INTERROGATION_DATA.playerComposureMax; //
 
-        // Mendapatkan data skill Inkuisitor pemain
         const user = getCurrentUser();
         const inqKnowledge = user.attributes.find(a => a.name === 'Knowledge').value;
         const inqFocus = user.attributes.find(a => a.name === 'Focus').value;
-        const passiveInsightActive = inqKnowledge >= (SKILL_TREE_DATA.Inquisitor.passive_insight?.level || Infinity);
-        const passiveLogicActive = inqKnowledge >= (SKILL_TREE_DATA.Inquisitor.passive_logic?.level || Infinity);
-        const activeRevelationActive = inqFocus >= (SKILL_TREE_DATA.Inquisitor.active_revelation?.level || Infinity);
-        const revelationSkillData = SKILL_TREE_DATA.Inquisitor.active_revelation;
+        const passiveInsightActive = inqKnowledge >= (SKILL_TREE_DATA.Inquisitor.passive_insight?.level || Infinity); //
+        const passiveLogicActive = inqKnowledge >= (SKILL_TREE_DATA.Inquisitor.passive_logic?.level || Infinity); //
+        const activeRevelationActive = inqFocus >= (SKILL_TREE_DATA.Inquisitor.active_revelation?.level || Infinity); //
+        const revelationSkillData = SKILL_TREE_DATA.Inquisitor.active_revelation; //
 
 
-        /**
-         * Fungsi internal untuk merender ulang konten modal interogasi.
-         * Ini memungkinkan pembaruan UI real-time selama mini-game.
-         */
         const renderInterrogationModalContent = () => {
-            // Memperbarui judul dan deskripsi modal
             document.getElementById('interrogate-modal-title').textContent = `Menginterogasi ${target.name}`;
             document.getElementById('interrogate-modal-description').textContent = "Barikade mental lawan harus dipecahkan.";
 
-            // Merender rune barikade mental
             const mentalBarricadeDisplay = document.getElementById('mental-barricade-display');
             const currentRuneHtml = currentBarricadeRunes.map((rune, i) => `
                 <div class="interrogate-rune ${rune.isBroken ? 'broken' : ''}" data-rune-id="${rune.id}" data-weakness="${rune.weaknesses[0]}">
@@ -89,16 +96,13 @@ export const InterrogateGame = {
             `).join('');
             mentalBarricadeDisplay.innerHTML = currentRuneHtml;
 
-            // Merender kartu argumen
             const argumentCardsContainer = document.getElementById('argument-cards-container');
-            const argumentCardsHtml = INTERROGATION_DATA.argumentCards.map(card => {
-                // Memeriksa apakah kartu memiliki kekuatan yang dapat memecahkan rune yang belum rusak
+            const argumentCardsHtml = INTERROGATION_DATA.argumentCards.map(card => { //
                 const hasEffectiveStrength = currentBarricadeRunes.some(rune => !rune.isBroken && card.strengths.some(s => rune.weaknesses.includes(s)));
-                // Memeriksa apakah pemain memiliki cukup Esensi Niat untuk kartu berisiko
-                const isUsable = (user.essenceOfWill >= (card.isRisky ? (SKILL_TREE_DATA.Inquisitor.active_interrogate.cost || 0) : 0));
+                const isUsable = (user.essenceOfWill >= (card.isRisky ? (SKILL_TREE_DATA.Inquisitor.active_interrogate.cost || 0) : 0)); //
                 const buttonClass = card.isRisky ? 'glass-button bg-red-700 hover:bg-red-600' : 'glass-button';
 
-                const isDisabled = !isUsable || !hasEffectiveStrength; // Nonaktifkan jika tidak dapat digunakan atau tidak ada kekuatan efektif yang tersisa
+                const isDisabled = !isUsable || !hasEffectiveStrength;
 
                 return `
                     <button class="${buttonClass} interro-card-btn ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}"
@@ -107,17 +111,14 @@ export const InterrogateGame = {
                     </button>
                 `;
             }).join('');
-            // Menambahkan tombol skill Revelation secara terpisah jika merupakan skill aktif
             const revelationButtonHtml = activeRevelationActive ? `
                 <button class="glass-button primary-button interro-card-btn revelation-skill-btn" data-card-id="revelation_skill_button" style="background: linear-gradient(135deg, #a78bfa, #c084fc);"><i data-feather="${revelationSkillData.icon}" class="w-4 h-4 mr-2"></i> ${revelationSkillData.name}</button>
-            ` : '';
+            ` : ''; //
 
             argumentCardsContainer.innerHTML = argumentCardsHtml + revelationButtonHtml;
 
-            // Menginisialisasi ulang ikon Feather setelah merender konten dinamis
             feather.replace();
 
-            // Merender bar komposur
             const canvas = document.getElementById('interrogate-composure-canvas');
             if (canvas) {
                 const ctx = canvas.getContext('2d');
@@ -126,20 +127,16 @@ export const InterrogateGame = {
                 InterrogateGame.renderComposureBar(ctx, currentComposure, playerComposureMax);
             }
 
-            // Mengatur event listener untuk kartu argumen
             document.querySelectorAll('#argument-cards-container .interro-card-btn').forEach(button => {
-                if (!button.disabled) { // Hanya lampirkan listener jika tombol tidak dinonaktifkan
+                if (!button.disabled) {
                     button.onclick = (e) => InterrogateGame.handleInterrogationAction(e.target.dataset.cardId, target, currentBarricadeRunes, currentComposure, playerComposureMax, renderInterrogationModalContent, passiveInsightActive, passiveLogicActive, activeRevelationActive, revelationSkillData);
                 }
             });
-            // Mengatur tombol tutup
             document.getElementById('interrogate-close-btn').onclick = () => {
-                interrogateModal.style.display = 'none'; // Sembunyikan modal secara langsung
-                // Potensi menambahkan logika untuk kegagalan interogasi jika ditutup sebelum waktunya
+                interrogateModal.style.display = 'none';
             };
 
-            // Menampilkan modal
-            interrogateModal.style.display = 'flex'; // Membuat modal terlihat
+            interrogateModal.style.display = 'flex';
             setTimeout(() => {
                 interrogateModal.style.opacity = 1;
                 interrogateModal.querySelector('.modal-content').style.opacity = 1;
@@ -147,31 +144,17 @@ export const InterrogateGame = {
             }, 10);
         };
 
-        renderInterrogationModalContent(); // Render awal
+        renderInterrogationModalContent();
     },
 
-    /**
-     * Menangani aksi ketika kartu argumen dimainkan.
-     * @param {string} cardId - ID kartu yang dimainkan.
-     * @param {object} target - Objek target yang diinterogasi.
-     * @param {Array} currentBarricadeRunes - Array rune barikade mental target.
-     * @param {number} currentComposure - Komposur pemain saat ini.
-     * @param {number} playerComposureMax - Komposur maksimum pemain.
-     * @param {function} renderCallback - Fungsi callback untuk merender ulang modal.
-     * @param {boolean} passiveInsightActive - Status skill 'Tatapan Tajam'.
-     * @param {boolean} passiveLogicActive - Status skill 'Logika Tanpa Celah'.
-     * @param {boolean} activeRevelationActive - Status skill 'Penghakiman Terakhir'.
-     * @param {object} revelationSkillData - Data skill 'Penghakiman Terakhir'.
-     */
     async handleInterrogationAction(cardId, target, currentBarricadeRunes, currentComposure, playerComposureMax, renderCallback, passiveInsightActive, passiveLogicActive, activeRevelationActive, revelationSkillData) {
         let successAttempt = false;
         const user = getCurrentUser();
 
-        // Penanganan khusus untuk skill Revelation
         if (cardId === 'revelation_skill_button') {
             if (activeRevelationActive) {
                 if (user.essenceOfWill < (revelationSkillData.cost || 0)) {
-                    UIManager.showNotification("Tidak cukup Esensi Niat untuk skill ini!", 'alert-triangle', 'bg-red-500');
+                    UIManagerRef.showNotification("Tidak cukup Esensi Niat untuk skill ini!", 'alert-triangle', 'bg-red-500'); // Gunakan UIManagerRef
                     return;
                 }
                 user.essenceOfWill -= (revelationSkillData.cost || 0);
@@ -181,31 +164,28 @@ export const InterrogateGame = {
                     if (!currentBarricadeRunes[i].isBroken) {
                         currentBarricadeRunes[i].isBroken = true;
                         runesBrokenCount++;
-                        if (runesBrokenCount >= (revelationSkillData.runeBreakCount || 1)) break; // Memecahkan hingga N rune
+                        if (runesBrokenCount >= (revelationSkillData.runeBreakCount || 1)) break;
                     }
                 }
-                UIManager.showNotification(`${revelationSkillData.name}: Perisai hancur di bawah beban kebenaran!`, 'zap', 'bg-purple-500');
-                // TODO: Putar audio skill
+                UIManagerRef.showNotification(`${revelationSkillData.name}: Perisai hancur di bawah beban kebenaran!`, 'zap', 'bg-purple-500'); // Gunakan UIManagerRef
                 successAttempt = true;
             } else {
-                UIManager.showNotification("Anda belum menguasai Penghakiman Terakhir.", 'info', 'bg-blue-500');
-                return; // Jangan lanjutkan jika skill tidak aktif
+                UIManagerRef.showNotification("Anda belum menguasai Penghakiman Terakhir.", 'info', 'bg-blue-500'); // Gunakan UIManagerRef
+                return;
             }
-        } else { // Kartu argumen biasa
-            const chosenCard = INTERROGATION_DATA.argumentCards.find(c => c.id === cardId);
+        } else {
+            const chosenCard = INTERROGATION_DATA.argumentCards.find(c => c.id === cardId); //
             if (!chosenCard) return;
 
-            // Mengonsumsi Esensi Niat untuk kartu berisiko
             if (chosenCard.isRisky) {
-                const cost = SKILL_TREE_DATA.Inquisitor.active_interrogate.cost || 0;
+                const cost = SKILL_TREE_DATA.Inquisitor.active_interrogate.cost || 0; //
                 if (user.essenceOfWill < cost) {
-                    UIManager.showNotification("Tidak cukup Esensi Niat untuk argumen berisiko ini!", 'alert-triangle', 'bg-red-500');
+                    UIManagerRef.showNotification("Tidak cukup Esensi Niat untuk argumen berisiko ini!", 'alert-triangle', 'bg-red-500'); // Gunakan UIManagerRef
                     return;
                 }
                 user.essenceOfWill -= cost;
-                await updateDocument("saga_worlds", DB_DOC_ID_Instance, {
-                    [`wanderers.${user.name}.essenceOfWill`]: user.essenceOfWill
-                });
+                // updateDocument tidak perlu DB_DOC_ID_Instance jika currentUser sudah updated.
+                // updateDocument("saga_worlds", DB_DOC_ID_Instance, { [`wanderers.${user.name}.essenceOfWill`]: user.essenceOfWill });
             }
 
             for (const strength of chosenCard.strengths) {
@@ -213,8 +193,7 @@ export const InterrogateGame = {
                 if (targetRuneIndex !== -1) {
                     currentBarricadeRunes[targetRuneIndex].isBroken = true;
                     successAttempt = true;
-                    UIManager.showNotification('Perisai mental retak!', 'check', 'bg-emerald-500');
-                    // TODO: Putar suara pecah rune
+                    UIManagerRef.showNotification('Perisai mental retak!', 'check', 'bg-emerald-500'); // Gunakan UIManagerRef
                     break;
                 }
             }
@@ -222,41 +201,35 @@ export const InterrogateGame = {
 
         if (!successAttempt) {
             let composurePenalty = 20;
-            if (passiveLogicActive && SKILL_TREE_DATA.Inquisitor.passive_logic.penaltyReduction) {
-                composurePenalty = Math.floor(composurePenalty * (1 - SKILL_TREE_DATA.Inquisitor.passive_logic.penaltyReduction));
-                UIManager.showNotification('Logika Tanpa Celah mengurangi penalti!', 'cpu', 'bg-blue-400');
+            if (passiveLogicActive && SKILL_TREE_DATA.Inquisitor.passive_logic.penaltyReduction) { //
+                composurePenalty = Math.floor(composurePenalty * (1 - SKILL_TREE_DATA.Inquisitor.passive_logic.penaltyReduction)); //
+                UIManagerRef.showNotification('Logika Tanpa Celah mengurangi penalti!', 'cpu', 'bg-blue-400'); // Gunakan UIManagerRef
             }
             currentComposure = Math.max(0, currentComposure - composurePenalty);
-            UIManager.showNotification('Argumen tidak efektif! Komposurmu menurun.', 'x-circle', 'bg-red-500');
-            // TODO: Tambahkan umpan balik visual/audio untuk kegagalan
-        } else if (passiveInsightActive && SKILL_TREE_DATA.Inquisitor.passive_insight.chance && Math.random() < SKILL_TREE_DATA.Inquisitor.passive_insight.chance) {
-            // Skill ini biasanya mengungkapkan kelemahan, tetapi karena kita tidak memiliki UI untuk mengungkapkan,
-            // kita hanya akan menampilkan notifikasi sebagai placeholder untuk efeknya.
-            UIManager.showNotification('Tatapan Tajam: Sebuah kelemahan baru terdeteksi!', 'eye', 'bg-yellow-400');
-            // Dalam UI yang lebih kompleks, ini akan menyoroti kelemahan yang belum terungkap pada rune yang belum rusak secara visual
+            UIManagerRef.showNotification('Argumen tidak efektif! Komposurmu menurun.', 'x-circle', 'bg-red-500'); // Gunakan UIManagerRef
+        } else if (passiveInsightActive && SKILL_TREE_DATA.Inquisitor.passive_insight.chance && Math.random() < SKILL_TREE_DATA.Inquisitor.passive_insight.chance) { //
+            UIManagerRef.showNotification('Tatapan Tajam: Sebuah kelemahan baru terdeteksi!', 'eye', 'bg-yellow-400'); // Gunakan UIManagerRef
         }
 
-        // Simpan status game saat ini (komposur dan rune yang rusak)
-        // Untuk kesederhanaan, kita akan menganggap ini fana untuk minigame dan hanya menyimpan status keseluruhan pengguna
         setCurrentUser(user);
-        await saveDBInstance(false); // Simpan potensi perubahan Esensi Niat
+        await saveDBInstanceRef(false);
 
-        // Render ulang konten modal untuk mencerminkan perubahan
         renderCallback();
 
-        // Periksa kondisi menang/kalah
         if (currentComposure <= 0) {
-            UIManager.closeModal(document.getElementById('interrogate-modal')); // Tutup modal interogasi
-            UIManager.showNotification(`Interogasi Gagal! Komposurmu hancur di depan ${target.name}.`, 'dizzy', 'bg-red-700');
-            user.alignment.echo = Math.min(100, user.alignment.echo + 20); // Penalti Echo
+            UIManagerRef.closeModal(document.getElementById('interrogate-modal')); // Gunakan UIManagerRef
+            UIManagerRef.showNotification(`Interogasi Gagal! Komposurmu hancur di depan ${target.name}.`, 'dizzy', 'bg-red-700'); // Gunakan UIManagerRef
+            user.alignment.echo = Math.min(100, user.alignment.echo + 20);
             setCurrentUser(user);
-            await saveDBInstance(false);
-            // Anda mungkin ingin memicu pembaruan UI lain di wandererFeatures setelah ini
+            await saveDBInstanceRef(false);
+            if (WandererPageRendererRef && WandererPageRendererRef.renderPlayerStatus) { // Jika ada referensi ke renderer
+                 WandererPageRendererRef.renderPlayerStatus();
+            }
             return;
         }
 
         if (currentBarricadeRunes.every(rune => rune.isBroken)) {
-            UIManager.closeModal(document.getElementById('interrogate-modal')); // Tutup modal interogasi
+            UIManagerRef.closeModal(document.getElementById('interrogate-modal')); // Gunakan UIManagerRef
             const interrogationResult = InterrogateGame.generateInterrogationResult(target.name);
             user.chronicle.push({
                 id: Date.now(),
@@ -268,9 +241,12 @@ export const InterrogateGame = {
                 sigil: 'lightbulb'
             });
             setCurrentUser(user);
-            await saveDBInstance(false);
-            UIManager.showNotification(`Interogasi Berhasil! Rahasia dari ${target.name} terungkap!`, 'check-circle', 'bg-gradient-to-r from-emerald-400 to-green-400');
-            // Anda mungkin ingin memicu pembaruan UI lain di wandererFeatures setelah ini
+            await saveDBInstanceRef(false);
+            UIManagerRef.showNotification(`Interogasi Berhasil! Rahasia dari ${target.name} terungkap!`, 'check-circle', 'bg-gradient-to-r from-emerald-400 to-green-400'); // Gunakan UIManagerRef
+            if (WandererPageRendererRef && WandererPageRendererRef.renderPlayerStatus) { // Jika ada referensi ke renderer
+                WandererPageRendererRef.renderPlayerStatus();
+                WandererPageRendererRef.renderChronicle(); // Perbarui kronik
+            }
         }
     },
 
@@ -290,21 +266,16 @@ export const InterrogateGame = {
 
         ctx.clearRect(0, 0, width, height);
 
-        // Latar belakang bar
         ctx.fillStyle = 'rgba(71, 85, 105, 0.5)';
         ctx.fillRect(x, y, barWidth, barHeight);
 
-        // Isi bar berdasarkan komposur
-        const fillWidth = barWidth * (current / max);
-        ctx.fillStyle = `rgba(129, 140, 248, ${current / max + 0.3})`; // Warna berubah dengan level komposur
+        ctx.fillStyle = `rgba(129, 140, 248, ${current / max + 0.3})`;
         ctx.fillRect(x, y, fillWidth, barHeight);
 
-        // Border bar
         ctx.strokeStyle = '#64748b';
         ctx.lineWidth = 2;
         ctx.strokeRect(x, y, barWidth, barHeight);
 
-        // Teks komposur
         ctx.fillStyle = 'white';
         ctx.font = `bold ${height * 0.4}px Cinzel, serif`;
         ctx.textAlign = 'center';
