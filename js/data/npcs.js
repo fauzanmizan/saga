@@ -1,5 +1,11 @@
 // js/data/npcs.js
 // == MODIFIED BY: Tim 3.A ==
+// == TANGGAL: 2025-06-27, 04:15 WITA ==
+// == PERIHAL: Refactoring GameData.js - Pemindahan FACTIONS_DATA ke npcs.js ==
+// - Menampung semua data statis terkait NPC, life stages, health states, factions, archetypes, dll.
+// - Memindahkan FACTIONS_DATA dari gameData.js ke sini.
+// ===========================================
+// == MODIFIED BY: Tim 3.A ==
 // == TANGGAL: 2025-06-27, 03:20 WITA ==
 // == PERIHAL: Refactoring GameData.js - Pemindahan Data Faksi ke npcs.js ==
 // - Menampung semua data statis terkait NPC, life stages, health states, factions, archetypes, dll.
@@ -154,6 +160,153 @@ export const NPC_ROLES = {
 };
 
 export const FACTION_TYPES = ['Neutral', 'SentinelAligned', 'HereticAligned', 'TraderGuild', 'ResistanceCell'];
+
+// NEW: FACTIONS_DATA dipindahkan dari gameData.js
+export const FACTIONS_DATA = {
+    'TheArbiters': {
+        id: 'TheArbiters',
+        name: 'The Arbiters',
+        description: 'Penjaga keseimbangan dan kebenbenaran, berusaha menjaga stabilitas Nexus Pusat. Mereka sering berkonflik dengan kekuatan Gema.',
+        type: 'political',
+        dominantRegions: ['TheCentralNexus'],
+        relationships: { 'TheEchoCult': 'rivalry', 'TheLuminousGuardians': 'alliance', 'TraderGuild': 'neutral', 'TheCinderTribes': 'rivalry' },
+        typicalNpcTraits: ['stoic', 'disciplined', 'courageous'],
+        notableResources: ['essence_crystal', 'rare_minerals'],
+        baseReputation: 20
+    },
+    'TheEchoCult': {
+        id: 'TheEchoCult',
+        name: 'The Echo Cult',
+        description: 'Kelompok yang menyembah Gema, percaya bahwa kehampaan adalah takdir sejati. Mereka berusaha menyebarkan korupsi. Memusuhi semua yang bukan dari mereka.',
+        type: 'religious',
+        dominantRegions: ['TheWhisperingReaches', 'TheAshfallWastes'],
+        relationships: { 'TheArbiters': 'hostile_by_default', 'TheLuminousGuardians': 'hostile_by_default', 'TraderGuild': 'hostile_by_default' },
+        typicalNpcTraits: ['pessimistic', 'fanatical', 'vengeful', 'fearful'],
+        notableResources: ['shadow_essence', 'mutated_flora'],
+        baseReputation: -50
+    },
+    'TheLuminousGuardians': {
+        id: 'TheLuminousGuardians',
+        name: 'The Luminous Guardians',
+        description: 'Pelindung cahaya Intensi, mereka berdedikasi untuk memurnikan dunia dari Gema dan membantu mereka yang membutuhkan. Cahaya adalah panduan mereka.',
+        type: 'religious',
+        dominantRegions: ['TheLuminousPlains', 'TheAzureForest'],
+        relationships: { 'TheEchoCult': 'rivalry', 'TheArbiters': 'alliance', 'TheDeepOnes': 'rivalry' },
+        typicalNpcTraits: ['optimistic', 'generous', 'courageous', 'loyal'],
+        notableResources: ['healing_herbs', 'pure_water'],
+        baseReputation: 30
+    },
+    'TraderGuild': {
+        id: 'TraderGuild',
+        name: 'Trader Guild',
+        description: 'Organisasi pedagang yang bergerak di seluruh dunia, selalu mencari keuntungan dan jalur perdagangan baru. Mereka netral dalam sebagian besar konflik, selama itu tidak mengganggu bisnis.',
+        type: 'neutral_trade',
+        dominantRegions: ['TheCrimsonDesert', 'TheFloatingIslands'],
+        relationships: { 'TheArbiters': 'neutral', 'TheEchoCult': 'neutral', 'TheStonekin': 'neutral' },
+        typicalNpcTraits: ['greedy', 'cautious', 'gregarious'],
+        notableResources: ['gold_coin', 'rare_tradables'],
+        baseReputation: 10
+    },
+    'TheStonekin': {
+        id: 'TheStonekin',
+        name: 'The Stonekin',
+        description: 'Ras kuno penghuni gunung, kuat dan pantang menyerah. Mereka melindungi tanah pegunungan mereka dari penyusup dan ancaman. Hubungan mereka dengan dunia luar seringkali tegang.',
+        type: 'ancient_race',
+        dominantRegions: ['TheShatteredPeaks'],
+        relationships: { 'TheEchoCult': 'rivalry', 'TraderGuild': 'neutral', 'TheArbiters': 'neutral' },
+        typicalNpcTraits: ['stoic', 'loyal', 'courageous', 'solitary'],
+        notableResources: ['rare_minerals', 'golem_parts'],
+        baseReputation: 0
+    },
+    'TheDeepOnes': {
+        id: 'TheDeepOnes',
+        name: 'The Deep Ones',
+        description: 'Penghuni kedalaman kota-kota tenggelam, misterius dan sering kali memusuhi permukaan. Mereka menjaga rahasia kuno yang terendam, memandang rendah makhluk daratan.',
+        type: 'monster_horde',
+        dominantRegions: ['TheSunkenCity'],
+        relationships: { 'TheLuminousGuardians': 'hostile_by_default', 'TraderGuild': 'hostile_by_default' },
+        typicalNpcTraits: ['solitary', 'vengeful', 'arrogant'],
+        notableResources: ['abyssal_pearls', 'ancient_relics'],
+        baseReputation: -40
+    },
+    'TheSkySentinels': {
+        id: 'TheSkySentinels',
+        name: 'The Sky Sentinels',
+        description: 'Penjaga langit dan pulau-pulau melayang, mereka adalah pilot ahli dan pejuang udara yang tak kenal takut. Mereka memantau ancaman dari atas.',
+        type: 'political',
+        dominantRegions: ['TheFloatingIslands'],
+        relationships: { 'TheEchoCult': 'rivalry', 'TheArbiters': 'alliance' },
+        typicalNpcTraits: ['courageous', 'disciplined', 'curious'],
+        notableResources: ['rare_gems', 'wind_essence'],
+        baseReputation: 25
+    },
+    'TheCinderTribes': {
+        id: 'TheCinderTribes',
+        name: 'The Cinder Tribes',
+        description: 'Suku-suku nomaden yang hidup di tanah vulkanik, beradaptasi dengan lingkungan keras. Terkenal karena keterampilan bertahan hidup dan pertempuran ganas, mereka tidak percaya pada orang luar.',
+        type: 'political',
+        dominantRegions: ['TheAshfallWastes', 'TheCrimsonDesert'],
+        relationships: { 'TheSandWorshippers': 'rivalry', 'TraderGuild': 'neutral' },
+        typicalNpcTraits: ['fierce', 'resilient', 'cautious'],
+        notableResources: ['obsidian', 'sulfur'],
+        baseReputation: -10
+    },
+    'TheHermits': {
+        id: 'TheHermits',
+        name: 'The Hermits of Silent Canyon',
+        description: 'Kelompok pertapa yang hidup terpencil di Ngarai Senyap, mencari kedamaian dan pengetahuan kuno. Mereka umumnya netral tetapi bisa memberikan wawasan unik bagi mereka yang sabar.',
+        type: 'neutral_religious',
+        dominantRegions: ['TheSilentCanyon'],
+        relationships: {},
+        typicalNpcTraits: ['wise', 'solitary', 'stoic'],
+        notableResources: ['rare_minerals', 'mystic_herbs'],
+        baseReputation: 0
+    },
+    'TheForestSpirits': {
+        id: 'TheForestSpirits',
+        name: 'The Forest Spirits',
+        description: 'Entitas kuno penjaga hutan, sering tidak terlihat oleh mata manusia. Mereka bereaksi terhadap keseimbangan hutan, bisa menjadi pelindung atau ancaman tergantung pada tindakan Wanderer.',
+        type: 'natural_entity',
+        dominantRegions: ['TheWhisperingWoods', 'TheAzureForest'],
+        relationships: { 'TheLuminousGuardians': 'alliance', 'TheEchoCult': 'rivalry' },
+        typicalNpcTraits: ['mysterious', 'vengeful', 'protective'],
+        notableResources: ['ancient_wood', 'mystic_herbs'],
+        baseReputation: 15
+    },
+    'TheSandWorshippers': {
+        id: 'TheSandWorshippers',
+        name: 'The Sand Worshippers',
+        description: 'Suku-suku gurun yang memuja entitas kuno di bawah pasir. Mereka gigih dan defensif terhadap wilayah mereka.',
+        type: 'religious',
+        dominantRegions: ['TheCrimsonDesert'],
+        relationships: { 'TraderGuild': 'neutral', 'TheCinderTribes': 'rivalry' },
+        typicalNpcTraits: ['loyal', 'courageous', 'fierce'],
+        notableResources: ['sunstone', 'desert_minerals'],
+        baseReputation: -5
+    },
+    'TheIceGuardians': {
+        id: 'TheIceGuardians',
+        name: 'The Ice Guardians',
+        description: 'Penjaga gletser abadi, makhluk purba yang beradaptasi dengan dingin ekstrem. Mereka sangat teritorial dan jarang berinteraksi dengan dunia luar.',
+        type: 'ancient_race',
+        dominantRegions: ['TheEternalGlacier'],
+        relationships: { 'TraderGuild': 'neutral' },
+        typicalNpcTraits: ['stoic', 'solitary', 'resilient'],
+        notableResources: ['ice_crystal', 'frozen_essence'],
+        baseReputation: -10
+    },
+    'TheAncientKeepers': {
+        id: 'TheAncientKeepers',
+        name: 'The Ancient Keepers',
+        description: 'Makhluk-makhluk kuno dan bijaksana yang melindungi hutan belantara. Mereka adalah entitas penjaga yang memastikan keseimbangan alam tetap terjaga.',
+        type: 'natural_entity',
+        dominantRegions: ['TheVerdantJungle'],
+        relationships: { 'TheLuminousGuardians': 'alliance' },
+        typicalNpcTraits: ['wise', 'cautious', 'protective'],
+        notableResources: ['exotic_flora', 'vibrant_fruit'],
+        baseReputation: 20
+    }
+};
 
 // --- Placeholder for other NPC related data from user prompt ---
 // NPC_RELATIONSHIP_TYPES - tidak ada di gameData.js yang diberikan sebelumnya.
