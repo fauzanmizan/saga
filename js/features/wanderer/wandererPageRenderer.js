@@ -150,20 +150,57 @@
 // ===========================================
 
 import { UIManager } from '../../uiManager.js';
-// Sesudah:
-import { getCurrentUser, setCurrentUser, AuthService as AuthServiceRef } from '../../authService.js'; // Impor AuthService sebagai AuthServiceRef (hindari konflik nama)
-import { updateDocument } from '../../firebaseService.js';
+import { getCurrentUser, setCurrentUser, AuthService as AuthServiceRef } from '../../authService.js';
+import { updateDocument, setDocument } from '../../firebaseService.js';
 import { WorldManager } from '../../worldManager.js';
-import { SKILL_TREE_DATA, GLOBAL_ATTRIBUTES, BIRTH_QUESTIONS, INTERROGATION_DATA, NPC_REPUTATION_LEVELS, NPC_HEALTH_STATES, NPC_LIFESTAGES, TRADABLE_ITEMS_DATA, COSMIC_CYCLES, WORLD_LANDMARKS, REGIONS_DATA, NPC_ROLES, NPC_PERSONALITY_TRAITS, JOURNAL_ENTRY_TEMPLATES } from '../../gameData.js'; // Import data baru
-// UBAH BARIS INI:
-// Sebelum: import { InterrogateGame, ChallengeGame, InspireGame, BarterGame, CommissionGame, AbsorbEchoGame, EmpathizeGame } from '../../features/wanderer/wandererGameLogic.js';
-// Sesudah:
-import * as WandererGameLogic from '../../features/wanderer/wandererGameLogic.js'; // Impor semua sebagai satu objek
-// Import modul interaksi NPC dan Quest Manager
-import { initializeNpcInteraction, triggerNpcDialogue } from '../../features/wanderer/npcInteraction.js';
-import { initializeQuestManager, checkQuestCompletion } from './questManager.js';
-import { gameTime } from '../../features/utils.js';
+import { SKILL_TREE_DATA, GLOBAL_ATTRIBUTES, BIRTH_QUESTIONS, INTERROGATION_DATA } from '../../data/core.js';
+import { LEGACY_CRITERIA } from '../../data/metaGame.js';
+import { InterrogateGame } from '../../miniGames/interrogateGame.js';
+import { AbsorbEchoGame } from '../../miniGames/absorbEchoGame.js';
+import { WandererPageRenderer } from './wandererPageRenderer.js';
 import { addToWandererChronicle } from '../../chronicleManager.js';
+
+let dbInstance;
+let saveDBInstance;
+let destinyClockIntervalInstance;
+
+export const WandererFeatures = {
+    /**
+     * Mengatur dependensi untuk modul WandererFeatures.
+     * @param {object} db - Instans database (dbInstance dari App).
+     * @param {function} saveDB - Fungsi untuk menyimpan database.
+     * @param {number} destinyClockInterval - Instans interval untuk jam takdir.
+     */
+    setDependencies(db, saveDB, destinyClockInterval) {
+        dbInstance = db;
+        saveDBInstance = saveDB;
+        destinyClockIntervalInstance = destinyClockInterval;
+        // Mengatur dependensi untuk mini-game dan renderer halaman
+        InterrogateGame.setDependencies(db, 'soulforgeSaga_v2.0_KitabAgung', saveDB);
+        AbsorbEchoGame.setDependencies(db, saveDB);
+        WandererPageRenderer.setDependencies(db, saveDB);
+    },
+
+    // --- Inisialisasi Halaman Wanderer ---
+    initWandererPage() {
+        if (!getCurrentUser() || getCurrentUser().role !== 'wanderer') {
+            AuthServiceRef.logout();
+            return;
+        }
+        document.getElementById('wanderer-app').style.display = 'flex';
+        document.getElementById('logout-button').onclick = () => AuthServiceRef.logout();
+        document.getElementById('wanderer-profile-icon').textContent = getCurrentUser().name.charAt(0);
+
+        // Pindahkan panggilan ini ke dalam initWandererPage
+        WandererPageRenderer.definePageTemplates(); // Panggil di sini, setelah getCurrentUser() tersedia
+
+        WandererPageRenderer.renderWandererNav();
+        WandererPageRenderer.setupWandererNavEvents();
+        WandererPageRenderer.renderWandererPage('character');
+        WandererFeatures.startDestinyClock();
+
+        setInterval(() => WandererFeatures.triggerEncounter(), 30000);
+    },
 
 // Global variable for Lucide Icons
 // Ensure you have <script src="https://unpkg.com/lucide@latest"></script> in your HTML
