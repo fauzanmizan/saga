@@ -178,6 +178,12 @@
 // - Menyesuaikan jalur impor `npcInteraction.js` dan `questManager.js` ke `../../features/wanderer/`
 //   sesuai dengan struktur yang direkomendasikan sebelumnya.
 // ===========================================
+// == MODIFIED BY: Gemini (requested by User) ==
+// == TANGGAL: 2025-06-27, 18:45 WITA ==
+// == PERIHAL: Refaktor Modul Mini-game ==
+// - Memindahkan logika mini-game Barter ke file `js/miniGames/barterGame.js`.
+// - Memperbarui impor dan panggilan `setDependencies` di `WandererPageRenderer`.
+// ===========================================
 
 import { UIManager } from '../../uiManager.js';
 import { getCurrentUser, setCurrentUser, AuthService as AuthServiceRef } from '../../authService.js';
@@ -189,29 +195,27 @@ import { LEGACY_CRITERIA } from '../../data/metaGame.js';
 // --- Imported Mini-Game Modules ---
 import { InterrogateGame } from '../../miniGames/interrogateGame.js';
 import { AbsorbEchoGame } from '../../miniGames/absorbEchoGame.js';
-import { ChallengeGame } from '../../miniGames/challengeGame.js'; // Extracted
-import { InspireGame } from '../../miniGames/inspireGame.js';     // Extracted
-import { BarterGame } from '../../miniGames/barterGame.js';
-import { CommissionGame } from '../../miniGames/commissionGame.js'; // Extracted
-import { EmpathizeGame } from '../../miniGames/empathizeGame.js'; // Extracted
+import { ChallengeGame } from '../../miniGames/challengeGame.js';
+import { InspireGame } from '../../miniGames/inspireGame.js';
+import { BarterGame } from '../../miniGames/barterGame.js'; // Extracted
+import { CommissionGame } from '../../miniGames/commissionGame.js';
+import { EmpathizeGame } from '../../miniGames/empathizeGame.js';
 
 // --- Imported Feature-Specific Modules ---
-import { initializeNpcInteraction, triggerNpcDialogue } from '../../features/wanderer/npcInteraction.js'; // Adjusted path
-import { initializeQuestManager, checkQuestCompletion } from '../../features/wanderer/questManager.js'; // Adjusted path
+import { initializeNpcInteraction, triggerNpcDialogue } from '../../features/wanderer/npcInteraction.js';
+import { initializeQuestManager, checkQuestCompletion } from '../../features/wanderer/questManager.js';
 import { addToWandererChronicle } from '../../chronicleManager.js';
 
-// HAPUS BARIS INI:
-// let dbInstance; // This line was correctly commented out or removed.
 let saveDBInstance;
 let destinyClockIntervalInstance;
 
 // === Variabel Lokal Modul ===
-let dbInstanceRef; // Ganti dengan nama yang jelas agar tidak bingung
+let dbInstanceRef;
 let saveDBInstanceRef;
 let UIManagerRef;
 let WorldManagerRef;
 let gameTimeRef;
-let currentZoomLevel = 1.0; // For world map
+let currentZoomLevel = 1.0;
 let wandererAttributeChartInstance;
 
 // === Elemen DOM yang akan diakses ===
@@ -240,9 +244,9 @@ let newReflectionText;
 let addReflectionBtn;
 
 // World Map UI elements (need to be re-fetched if the HTML content changes for the page)
-let worldMapSvgContainer; // Main SVG container for the map
-let regionDetailPanel; // Panel for region details
-let poiDetailPanel; // Panel for POI details
+let worldMapSvgContainer;
+let regionDetailPanel;
+let poiDetailPanel;
 let poiDetailName;
 let poiDetailStatus;
 let poiDetailType;
@@ -263,8 +267,6 @@ export const WandererFeatures = {
         dbInstanceRef = db;
         saveDBInstance = saveDB;
         destinyClockIntervalInstance = destinyClockInterval;
-        // The mini-game dependencies are set in WandererPageRenderer.setDependencies
-        // as they need more dependencies from the main renderer/UI.
     },
 
     // --- Inisialisasi Halaman Wanderer ---
@@ -283,9 +285,6 @@ export const WandererFeatures = {
         WandererPageRenderer.renderCurrentPage('character');
         WandererFeatures.startDestinyClock();
 
-        // This assumes WandererGameLogic exists and is correctly structured
-        // It would be better to pass these dependencies explicitly or ensure they are imported.
-        // For now, assuming they are globally available or imported in App.js which initializes this.
         setInterval(() => WandererFeatures.triggerEncounter(), 30000);
     },
 
@@ -306,7 +305,7 @@ export const WandererFeatures = {
     setupWandererNavEvents() {
         const navLinks = document.querySelectorAll('.wanderer-nav-link');
         navLinks.forEach(link => {
-            link.removeEventListener('click', WandererPageRenderer._navClickHandler); // Remove previous listener
+            link.removeEventListener('click', WandererPageRenderer._navClickHandler);
 
             WandererPageRenderer._navClickHandler = async (e) => {
                 e.preventDefault();
