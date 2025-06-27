@@ -51,16 +51,16 @@
 // - Menambahkan fungsi calculateAndApplyLegacy() untuk menghitung dan menyimpan Poin Legacy saat Apoteosis.
 // ===========================================
 
-import { UIManager } from '../../uiManager.js'; // Perbaikan jalur
-import { getCurrentUser, setCurrentUser, logout } from '../../authService.js'; // Perbaikan jalur
-import { updateDocument, setDocument } from '../../firebaseService.js'; // Perbaikan jalur
-import { WorldManager } from '../../worldManager.js'; // Perbaikan jalur
-import { SKILL_TREE_DATA, GLOBAL_ATTRIBUTES, BIRTH_QUESTIONS, INTERROGATION_DATA } from '../../data/core.js'; // Konstan inti
-import { LEGACY_CRITERIA } from '../../data/metaGame.js'; // LEGACY_CRITERIA dari metaGame.js
-import { InterrogateGame } from '../../miniGames/interrogateGame.js'; // interrogateGame.js ada di js/miniGames/
-import { AbsorbEchoGame } from '../../miniGames/absorbEchoGame.js'; // absorbEchoGame.js ada di js/miniGames/
+import { UIManager } from '../../uiManager.js';
+import { getCurrentUser, setCurrentUser, AuthService as AuthServiceRef } from '../../authService.js'; // Mengimpor AuthService sebagai AuthServiceRef
+import { updateDocument, setDocument } from '../../firebaseService.js';
+import { WorldManager } from '../../worldManager.js';
+import { SKILL_TREE_DATA, GLOBAL_ATTRIBUTES, BIRTH_QUESTIONS, INTERROGATION_DATA } from '../../data/core.js';
+import { LEGACY_CRITERIA } from '../../data/metaGame.js';
+import { InterrogateGame } from '../../miniGames/interrogateGame.js';
+import { AbsorbEchoGame } from '../../miniGames/absorbEchoGame.js';
 import { WandererPageRenderer } from './wandererPageRenderer.js';
-import { addToWandererChronicle } from '../../chronicleManager.js'; // Import chronicleManager
+import { addToWandererChronicle } from '../../chronicleManager.js';
 
 let dbInstance;
 let saveDBInstance;
@@ -86,11 +86,13 @@ export const WandererFeatures = {
     // --- Inisialisasi Halaman Wanderer ---
     initWandererPage() {
         if (!getCurrentUser() || getCurrentUser().role !== 'wanderer') {
-            logout();
+            // UBAH PANGGILAN LOGOUT DI SINI
+            AuthServiceRef.logout(); // Panggil logout dari objek AuthServiceRef
             return;
         }
         document.getElementById('wanderer-app').style.display = 'flex';
-        document.getElementById('logout-button').onclick = () => logout();
+        // UBAH PANGGILAN LOGOUT DI SINI UNTUK TOMBOL LOGOUT JUGA
+        document.getElementById('logout-button').onclick = () => AuthServiceRef.logout(); // Panggil logout dari objek AuthServiceRef
         document.getElementById('wanderer-profile-icon').textContent = getCurrentUser().name.charAt(0);
 
         WandererPageRenderer.renderWandererNav();
