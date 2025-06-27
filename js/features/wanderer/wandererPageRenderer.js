@@ -186,7 +186,8 @@ export const WandererFeatures = {
      * @param {number} destinyClockInterval - Instans interval untuk jam takdir.
      */
     setDependencies(db, saveDB, destinyClockInterval) {
-        dbInstance = db;
+        // Change 'dbInstance = db;' to 'dbInstanceRef = db;'
+        dbInstanceRef = db; // Corrected line
         saveDBInstance = saveDB;
         destinyClockIntervalInstance = destinyClockInterval;
         // Mengatur dependensi untuk mini-game dan renderer halaman
