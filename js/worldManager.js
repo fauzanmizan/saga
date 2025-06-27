@@ -111,7 +111,7 @@ import {
     REGIONS_DATA, FACTIONS_DATA, CREATURES_DATA, WORLD_LANDMARKS, // New Imports
     NPC_ROLES, JOURNAL_ENTRY_TEMPLATES, GLOBAL_LOOT_TABLES, ITEM_EFFECTS_DATA // New Imports
 } from './gameData.js';
-import { gameTime } from './utils.js';
+import { gameTime } from './features/utils.js';
 import { triggerWhisperEvent } from './eventManager.js';
 import { addToWandererChronicle } from './chronicleManager.js';
 
