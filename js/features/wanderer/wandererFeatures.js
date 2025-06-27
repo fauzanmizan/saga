@@ -55,7 +55,8 @@ import { UIManager } from '../../uiManager.js'; // Perbaikan jalur
 import { getCurrentUser, setCurrentUser, logout } from '../../authService.js'; // Perbaikan jalur
 import { updateDocument, setDocument } from '../../firebaseService.js'; // Perbaikan jalur
 import { WorldManager } from '../../worldManager.js'; // Perbaikan jalur
-import { SKILL_TREE_DATA, GLOBAL_ATTRIBUTES, BIRTH_QUESTIONS, INTERROGATION_DATA, LEGACY_CRITERIA } from '../../data/core.js'; // Import LEGACY_CRITERIA
+import { SKILL_TREE_DATA, GLOBAL_ATTRIBUTES, BIRTH_QUESTIONS, INTERROGATION_DATA } from '../../data/core.js'; // Konstan inti
+import { LEGACY_CRITERIA } from '../../data/metaGame.js'; // LEGACY_CRITERIA dari metaGame.js
 import { InterrogateGame } from '../../miniGames/interrogateGame.js'; // interrogateGame.js ada di js/miniGames/
 import { AbsorbEchoGame } from '../../miniGames/absorbEchoGame.js'; // absorbEchoGame.js ada di js/miniGames/
 import { WandererPageRenderer } from './wandererPageRenderer.js';
